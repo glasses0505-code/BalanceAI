@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BOD バランス大家大学 — コンテンツナビゲーション</title>
+<style>
+:root{--pr:#1a3a5c;--ac:#e8a020;--gr:#2d7d46;--bg:#f0f2f5;--wh:#fff;--bd:#e0e4ea;--tx:#1a1a2e;--mu:#6b7280;--ra:10px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Hiragino Sans','Noto Sans JP',sans-serif;background:var(--bg);color:var(--tx);line-height:1.55}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0c1f38,#1a3a5c,#1e4976);color:#fff;padding:44px 20px 36px;text-align:center}
+.hero-badge{display:inline-block;background:var(--ac);color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;padding:3px 12px;border-radius:20px;margin-bottom:14px}
+.hero h1{font-size:1.9rem;font-weight:800;margin-bottom:6px}.hero h1 span{color:var(--ac)}
+.hero-sub{font-size:.92rem;opacity:.8;margin-bottom:20px}
+.hero-stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.si{text-align:center}.sn{font-size:1.9rem;font-weight:800;color:var(--ac);display:block}.sl{font-size:.72rem;opacity:.8}
+
+/* STICKY NAV */
+.snav{position:sticky;top:0;z-index:100;background:var(--pr);border-bottom:3px solid var(--ac);padding:0 12px;overflow-x:auto;white-space:nowrap}
+.snav::-webkit-scrollbar{height:3px}.snav::-webkit-scrollbar-thumb{background:var(--ac)}
+.nl{display:inline-flex}
+.nl a{display:inline-block;color:rgba(255,255,255,.72);text-decoration:none;font-size:.75rem;font-weight:600;padding:11px 12px;border-bottom:3px solid transparent;margin-bottom:-3px;transition:all .2s}
+.nl a:hover{color:#fff;border-bottom-color:var(--ac)}
+
+/* MAIN */
+main{max-width:1120px;margin:0 auto;padding:28px 14px}
+
+/* PURPOSE */
+.purpose{background:linear-gradient(90deg,var(--gr),#3a9d5e);color:#fff;border-radius:var(--ra);padding:16px 22px;margin-bottom:28px;display:flex;align-items:center;gap:14px}
+.pi{font-size:1.8rem;flex-shrink:0}.pt h3{font-size:.78rem;opacity:.8;font-weight:400}.pt p{font-size:.95rem;font-weight:700}
+
+/* LEGEND */
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:22px;padding:12px 18px;background:var(--wh);border-radius:var(--ra);border:1px solid var(--bd);font-size:.8rem;color:var(--mu)}
+.li{display:flex;align-items:center;gap:5px}
+
+/* FACULTY */
+.faculty{margin-bottom:44px}
+.fac-hd{display:flex;align-items:center;gap:10px;padding:14px 18px;background:var(--pr);color:#fff;border-radius:var(--ra) var(--ra) 0 0;margin-bottom:2px}
+.fi{font-size:1.4rem}.fac-hd h2{font-size:.98rem;font-weight:700}
+.units-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(460px,1fr));gap:2px;background:var(--bd)}
+
+/* UNIT */
+.unit{background:var(--wh);padding:18px}
+.unit-hd{margin-bottom:14px}
+.unit-title-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.ui{font-size:1.2rem}.un{font-size:.7rem;color:var(--mu);font-weight:600}.unm{font-size:.95rem;font-weight:700;color:var(--pr)}
+.uprg{display:flex;align-items:center;gap:8px}
+.pb{flex:1;height:5px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pf{height:100%;background:linear-gradient(90deg,var(--gr),#5bbf7a);border-radius:3px}
+.pl{font-size:.68rem;color:var(--mu);white-space:nowrap}
+
+/* LESSONS */
+.lc-wrap{display:flex;flex-direction:column;gap:7px}
+.lesson{border-radius:7px;overflow:hidden}
+.lesson-header{display:flex;align-items:center;gap:7px;padding:7px 11px;font-size:.85rem}
+.lesson.has-video .lesson-header{background:#f0f9f4;border:1px solid #c6f0d8}
+.lesson.no-video .lesson-header{background:#f9fafb;border:1px solid #e5e7eb}
+.lc{font-size:.85rem;flex-shrink:0}.lt{flex:1;font-weight:600}
+.vc{font-size:.68rem;background:var(--gr);color:#fff;padding:2px 7px;border-radius:10px;font-weight:700}
+.cs{font-size:.68rem;background:#e5e7eb;color:var(--mu);padding:2px 7px;border-radius:10px}
+
+/* VIDEO LIST */
+.video-list{display:flex;flex-wrap:wrap;gap:7px;padding:7px 10px 11px;background:#fafaf8;border:1px solid #c6f0d8;border-top:none;border-radius:0 0 7px 7px}
+.video-card{display:flex;align-items:center;gap:7px;background:var(--wh);border:1px solid var(--bd);border-radius:7px;padding:5px 9px 5px 5px;text-decoration:none;color:var(--tx);transition:all .2s;flex:1 1 220px;max-width:300px}
+.video-card:hover{border-color:var(--ac);box-shadow:0 2px 8px rgba(232,160,32,.18);transform:translateY(-1px)}
+.thumb-wrap{position:relative;width:76px;height:52px;border-radius:5px;overflow:hidden;flex-shrink:0;background:var(--pr)}
+.thumb-wrap img{width:100%;height:100%;object-fit:cover}
+.tp{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;background:var(--pr)}
+.play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.28);color:#fff;font-size:.75rem;opacity:0;transition:.2s}
+.video-card:hover .play-overlay{opacity:1}
+.video-meta{flex:1;min-width:0}
+.video-title-text{font-size:.72rem;color:var(--tx);font-weight:500;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;line-height:1.45}
+
+/* FOOTER */
+footer{text-align:center;padding:28px 14px;font-size:.78rem;color:var(--mu);border-top:1px solid var(--bd);margin-top:28px}
+footer strong{color:var(--pr)}
+
+@media(max-width:580px){
+  .hero h1{font-size:1.45rem}
+  .units-grid{grid-template-columns:1fr}
+  .video-card{max-width:100%}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-badge">🎓 ONLINE SALON</div>
+  <h1>BOD <span>バランス大家大学</span></h1>
+  <p class="hero-sub">目的：駆け出し大家さんが一つ買って運用できるようになること</p>
+  <div class="hero-stats">
+    <div class="si"><span class="sn">7</span><span class="sl">学部</span></div>
+    <div class="si"><span class="sn">16</span><span class="sl">単位</span></div>
+    <div class="si"><span class="sn">41</span><span class="sl">授業（動画あり）</span></div>
+    <div class="si"><span class="sn">38</span><span class="sl">授業（準備中）</span></div>
+  </div>
+</header>
+
+<nav class="snav">
+  <div class="nl">
+    <a href="#faculty1">🏛 戦略設計</a>
+    <a href="#faculty2">📊 物件分析</a>
+    <a href="#faculty3">🏗 現場実践</a>
+    <a href="#faculty4">🤝 交渉戦略</a>
+    <a href="#faculty5">🏦 金融工学</a>
+    <a href="#faculty6">📜 契約実務</a>
+    <a href="#faculty7">🏢 運用経営</a>
+  </div>
+</nav>
+
+<main>
+  <div class="purpose">
+    <div class="pi">🎯</div>
+    <div class="pt">
+      <h3>卒業要件</h3>
+      <p>物件を買えたら卒業。三春ソリューションが仲介に入ったら、支払った授業料は仲介料と相殺。</p>
+    </div>
+  </div>
+  <div class="legend">
+    <div class="li">✅ 動画あり（タイトルをクリックでYouTube視聴）</div>
+    <div class="li">📝 準備中（今後撮影予定）</div>
+    <div class="li"><span style="display:inline-block;width:11px;height:11px;background:var(--gr);border-radius:2px"></span>&nbsp;動画本数バッジ</div>
+  </div>
+  
+  <section class="faculty" id="faculty1">
+    <div class="fac-hd">
+      <span class="fi">🏛</span>
+      <h2>第Ⅰ学部：戦略設計学部</h2>
+    </div>
+    <div class="units-grid">
+    <div class="unit" id="unit1">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">🧭</span>
+          <div><div class="un">第1単位</div><div class="unm">人生戦略設計論</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:80%"></div></div>
+          <span class="pl">4/5</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">不動産投資の本質（労働収入との違い）</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">CF型と純資産拡大型の戦略比較</span>
+            <span class="vc">2本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=N8U11nx27UQ" target="_blank" class="video-card" title="5年前に建てた新築アパートを売却した体験談を通じ、キャピタルゲイン狙いの不動産投資の流れを紹介。横浜物件を3500万で建設し4500万で売却、その益を次の土地購">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/N8U11nx27UQ/mqdefault.jpg" alt="5年前に建てた新築アパートを売却した体験談を通じ" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">5年前に建てた新築アパートを売却した体験談を通じ</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=Sx0QRVMLvjg" target="_blank" class="video-card" title="物件売却の高値戦略として、師匠から「高値で放置」するアドバイスを受けた経験を共有。売れても売れなくても困らない価格設定で市場に出すことで、残債減少とインカム収入">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/Sx0QRVMLvjg/mqdefault.jpg" alt="物件売却の高値戦略として" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">物件売却の高値戦略として</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">自己資金と時間の最適配分</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=XvaysDhQJGQ" target="_blank" class="video-card" title="500万円の頭金で1億円の横須賀物件を取得し、約20倍のレバレッジで資産が増加した事例を報告。少額自己資金で大きな資産を得るレバレッジ効果を常に意識することが規">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/XvaysDhQJGQ/mqdefault.jpg" alt="500万円の自己資金で1億の資産を作った方法" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">500万円の自己資金で1億の資産を作った方法</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=31AXsYgAiM0" target="_blank" class="video-card" title="不動産仲介業で元手なく稼いでいた経験を持つ投資家が、資金のない時期の行動習慣を3つ紹介。まず仲介業務で自己資金を積み上げることが不動産投資の出発点になると解説し">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/31AXsYgAiM0/mqdefault.jpg" alt="不動産仲介業で元手なく稼いでいた経験を持つ投資家が" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産仲介業で元手なく稼いでいた経験を持つ投資家が</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=ccne7E2c0-0" target="_blank" class="video-card" title="SDGs関連商品と運転資金として3法人合計5000万円の融資がクリスマスに承認・入金された。温存資金を頭金に充て、運転資金で事業を回す資金活用戦略を紹介。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/ccne7E2c0-0/mqdefault.jpg" alt="SDGs関連商品と運転資金として3法人合計5000万円の融資がクリスマスに承認・入金された" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">SDGs関連商品と運転資金として3法人合計5000万円の融資がクリスマスに承認・入金された</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">リスク許容度の構造理解</span>
+            <span class="vc">1本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=nFO-G4qn3XE" target="_blank" class="video-card" title="人口減少が進む地域では建物コストが高く土地付き物件の売却が困難になるため、売却益より家賃収入で回す戦略が有効だ。不動産投資は「持って良し・売って良し」の状態を目">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/nFO-G4qn3XE/mqdefault.jpg" alt="人口減少が進む地域では建物コストが高く土地付き物件の売却が困難になるため" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">人口減少が進む地域では建物コストが高く土地付き物件の売却が困難になるため</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">家族合意形成の技術</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=_j3FuroamSw" target="_blank" class="video-card" title="不動産収益を家族に還元する重要性を説き、「外で使った3倍を家族に使い、その3倍稼ぐ」という9倍マインドによる資産拡大の考え方を紹介している。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/_j3FuroamSw/mqdefault.jpg" alt="奥さんに還元するのはものですかことですかというテーマ" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">奥さんに還元するのはものですかことですかというテーマ</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=" target="_blank" class="video-card" title="小規模物件の保有方針を「利益1000万円まで保有」から回転率重視に転換し、隣接2棟をバルク売却した。利回り10%・投資アテンド付きでサロン会員に譲渡し、6年前2">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi//mqdefault.jpg" alt="" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text"></span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=dSO0pVko-NM" target="_blank" class="video-card" title="不動産投資を学ぶ際、配偶者から「なぜそんな借金を」と反対されるケースが非常に多いが、これには原理原則的な理由があり、家賃滞納保証など具体的なリスクヘッジ策を知る">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/dSO0pVko-NM/mqdefault.jpg" alt="不動産投資を学ぶ際、配偶者から「なぜそんな借金を」と反対されるケースが非常に多いが" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産投資を学ぶ際、配偶者から「なぜそんな借金を」と反対されるケースが非常に多いが</span>
+              </div>
+            </a></div>
+        </div></div>
+    </div>
+    <div class="unit" id="unit2">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">🧭</span>
+          <div><div class="un">第2単位</div><div class="unm">属性分析学</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:80%"></div></div>
+          <span class="pl">4/5</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">属性が融資に与える影響</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=1Ka6iatSv-8" target="_blank" class="video-card" title="高属性投資家が居住地を関西に移すというアドバイスを実践した結果、メガ大家になれた事例を紹介し、属性と地域選択の組み合わせが資産拡大の鍵になることを示す。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/1Ka6iatSv-8/mqdefault.jpg" alt="メガになりたくば関西へ行けって言われても行く人本当にいるの?でも行ったらメガになったよ。" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">メガになりたくば関西へ行けって言われても行く人本当にいるの?でも行ったらメガになったよ。</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=lFr6HHMeCjg" target="_blank" class="video-card" title="年収700万以上の高属性向けに不動産投資の最適化座談会をZoomで開催予定。医師など高属性投資家の事例を共有し、オリックス等の融資を活用した購入スキームを解説す">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/lFr6HHMeCjg/mqdefault.jpg" alt="年収700万以上の人質問大募集。" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">年収700万以上の人質問大募集。</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=m14Vvwc0riY" target="_blank" class="video-card" title="年収1000万円以上限定の不動産投資家コミュニティ「チフルべ会」など複数の部会が存在し、DIY好きや初心者向けの情報交換の場も設けられている。属性別に分かれた投">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/m14Vvwc0riY/mqdefault.jpg" alt="年収1000万円以上限定の不動産投資家コミュニティ「チフルべ会」など複数の部会が存在し" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">年収1000万円以上限定の不動産投資家コミュニティ「チフルべ会」など複数の部会が存在し</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">年収倍率の基礎理論</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=5v5rFBpjPto" target="_blank" class="video-card" title="新築ワンルーム投資は節税手段としては有効だが、投資としての規模拡大には適さない商品だ。年収1000万円前後の人が3戸購入後に銀行融資を受けられなくなるケースが多">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/5v5rFBpjPto/mqdefault.jpg" alt="規模拡大における区分投資の役割：やっていい区分・ダメな区分" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">規模拡大における区分投資の役割：やっていい区分・ダメな区分</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=gqWXe8S9mNw" target="_blank" class="video-card" title="年収1000万円以上のエリートサラリーマン100名超が集う投資コミュニティを例に、高収入層でも不動産規模拡大が遅れる共通の法則について解説している。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/gqWXe8S9mNw/mqdefault.jpg" alt="年収1000万円以上のエリートサラリーマン100名超が集う投資コミュニティを例に" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">年収1000万円以上のエリートサラリーマン100名超が集う投資コミュニティを例に</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=kmDywWe9JKE" target="_blank" class="video-card" title="初期投資家（年収1000万以下・20室以下）が法人で融資を受ける際、法人があっても金融資産500万円など一定条件を満たさないと融資は難しい。法人活用の有効性と銀">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/kmDywWe9JKE/mqdefault.jpg" alt="初期投資家（年収1000万以下・20室以下）が法人で融資を受ける際" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">初期投資家（年収1000万以下・20室以下）が法人で融資を受ける際</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">既存借入の整理方法</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">信用情報の仕組み</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=0dbchUfcAbA" target="_blank" class="video-card" title="「ブラックリスト」という実際のリストは存在せず、信用情報機関CICへの延滞記録の記載状態が融資審査に影響する。俗称としての「ブラックリスト」の正確な意味と仕組み">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/0dbchUfcAbA/mqdefault.jpg" alt="「ブラックリスト」という実際のリストは存在せず" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">「ブラックリスト」という実際のリストは存在せず</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=18CDtSlQ9g4" target="_blank" class="video-card" title="「ブラックリスト」という実在しないリストの誤解を解き、実際には個人信用情報機関CICへの登録内容が不動産融資審査に影響することを解説。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/18CDtSlQ9g4/mqdefault.jpg" alt="あなたもブラックリスト？CICって何？" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">あなたもブラックリスト？CICって何？</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=XbOLXsaGNhg" target="_blank" class="video-card" title="クレジットカードのキャッシング枠は未使用でも借入枠として信用情報に記録され、支払い延滞履歴があると銀行から返済能力なしと判断され融資拒否の原因となる。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/XbOLXsaGNhg/mqdefault.jpg" alt="クレジットカードのキャッシング枠は未使用でも借入枠として信用情報に記録され" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">クレジットカードのキャッシング枠は未使用でも借入枠として信用情報に記録され</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">個人 vs 法人の初期選択</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=3eivVHf_vik" target="_blank" class="video-card" title="不動産の「事業的規模（5棟10室）」と法人化は無関係で、個人の青色申告の適用可否と公務員の副業規定への抵触を左右する基準として理解すべき概念。法人設立のタイミン">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/3eivVHf_vik/mqdefault.jpg" alt="教えてバランスさん法人っていつ作ればいいの?" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">教えてバランスさん法人っていつ作ればいいの?</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=l47BUOZH3I8" target="_blank" class="video-card" title="合同会社は定款認証が不要なためマネーロンダリングリスクが高く、代表社員死亡時に定款規定がないと会社解散となる点が株式会社との主な違い。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/l47BUOZH3I8/mqdefault.jpg" alt="合同会社は定款認証が不要なためマネーロンダリングリスクが高く" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">合同会社は定款認証が不要なためマネーロンダリングリスクが高く</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=PIHQk1nnSZY" target="_blank" class="video-card" title="法人設立後の銀行口座開設が近年著しく困難になっており、特に合同会社形態が金融機関から敬遠される背景と理由を解説している。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/PIHQk1nnSZY/mqdefault.jpg" alt="教えてバランさん。なんで株式会社じゃないとダメなの?" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">教えてバランさん。なんで株式会社じゃないとダメなの?</span>
+              </div>
+            </a></div>
+        </div></div>
+    </div>
+    <div class="unit" id="unit3">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">🧭</span>
+          <div><div class="un">第3単位</div><div class="unm">買い進めロードマップ設計学</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:60%"></div></div>
+          <span class="pl">3/5</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">一棟目の勝ちパターン設計</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">金融機関攻略順序の考え方</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">3棟目までの逆算戦略</span>
+            <span class="vc">1本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=XeLH5--PiIE" target="_blank" class="video-card" title="JR木笠駅徒歩1分の7階建て商業・居住複合ビルを、4年前に自身3棟目の物件として購入した事例を紹介する。大型物件の詳細な取得背景と経緯は別途動画にて詳しく解説予">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/XeLH5--PiIE/mqdefault.jpg" alt="JR木笠駅徒歩1分の7階建て商業・居住複合ビルを" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">JR木笠駅徒歩1分の7階建て商業・居住複合ビルを</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">レバレッジの正しい使い方</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=XvaysDhQJGQ" target="_blank" class="video-card" title="500万円の頭金で1億円の横須賀物件を取得し、約20倍のレバレッジで資産が増加した事例を報告。少額自己資金で大きな資産を得るレバレッジ効果を常に意識することが規">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/XvaysDhQJGQ/mqdefault.jpg" alt="500万円の自己資金で1億の資産を作った方法" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">500万円の自己資金で1億の資産を作った方法</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=2y3rU6Lcvs8" target="_blank" class="video-card" title="市街化調整区域のアパートは原則として融資がつきにくくレバレッジが効かないため規模拡大の障害になる。ただし建築審査会の同意を得たエリアや宅地が密集する地域では例外">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/2y3rU6Lcvs8/mqdefault.jpg" alt="市街化調整区域のアパートは原則として融資がつきにくくレバレッジが効かないため規模拡大の障害になる" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">市街化調整区域のアパートは原則として融資がつきにくくレバレッジが効かないため規模拡大の障害になる</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=6Vw78KrUfGc" target="_blank" class="video-card" title="不動産投資の最大の強みはレバレッジで、種銭なしでも融資活用により100万円で3500万円の物件購入が可能な点が株式投資との大きな違い。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/6Vw78KrUfGc/mqdefault.jpg" alt="教えて、バランスさん。不動産投資するんだったら不動産屋さんの株に投資すればいいんじゃないの?って言われたんだけ…" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">教えて、バランスさん。不動産投資するんだったら不動産屋さんの株に投資すればいいんじゃないの?って言われたんだけ…</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">失敗する拡大パターン分析</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=dSO0pVko-NM" target="_blank" class="video-card" title="不動産投資を学ぶ際、配偶者から「なぜそんな借金を」と反対されるケースが非常に多いが、これには原理原則的な理由があり、家賃滞納保証など具体的なリスクヘッジ策を知る">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/dSO0pVko-NM/mqdefault.jpg" alt="不動産投資を学ぶ際、配偶者から「なぜそんな借金を」と反対されるケースが非常に多いが" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産投資を学ぶ際、配偶者から「なぜそんな借金を」と反対されるケースが非常に多いが</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=gUvABS96BCc" target="_blank" class="video-card" title="2024年4月に銀座で開催された座談会形式の交流会で、湘南・神奈川エリアにおける新金融活用の成功・失敗事例が当事者により発表され、融資獲得の実態が共有された。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/gUvABS96BCc/mqdefault.jpg" alt="2024年4月に銀座で開催された座談会形式の交流会で" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">2024年4月に銀座で開催された座談会形式の交流会で</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=Hyy-aYJDLcs" target="_blank" class="video-card" title="不動産歴20年の投資家が、ほぼ全案件を黒字で完了してきた実績を前置きしつつ、珍しく損失が出た案件を紹介する。失敗事例から学べる実践的な教訓を共有することが動画の">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/Hyy-aYJDLcs/mqdefault.jpg" alt="不動産歴20年の投資家が" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産歴20年の投資家が</span>
+              </div>
+            </a></div>
+        </div></div>
+    </div></div>
+  </section>
+  <section class="faculty" id="faculty2">
+    <div class="fac-hd">
+      <span class="fi">📊</span>
+      <h2>第Ⅱ学部：物件分析学部（Desk Research）</h2>
+    </div>
+    <div class="units-grid">
+    <div class="unit" id="unit4">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">📊</span>
+          <div><div class="un">第4単位</div><div class="unm">物件探索技術論</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:60%"></div></div>
+          <span class="pl">3/5</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">ポータル・レインズの使い方</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=BKTEmekdu4A" target="_blank" class="video-card" title="ポータルサイト活用時は掲載から半年以上経過した物件に注目し、売主の焦りを読んで交渉する「さじ加減」が安値購入の鍵。いきなり強引な値引き交渉は避け、タイミングと状">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/BKTEmekdu4A/mqdefault.jpg" alt="ポータルサイト活用時は掲載から半年以上経過した物件に注目し" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">ポータルサイト活用時は掲載から半年以上経過した物件に注目し</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=" target="_blank" class="video-card" title="小規模物件の保有方針を「利益1000万円まで保有」から回転率重視に転換し、隣接2棟をバルク売却した。利回り10%・投資アテンド付きでサロン会員に譲渡し、6年前2">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi//mqdefault.jpg" alt="" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text"></span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=GZfQoUPyzHY" target="_blank" class="video-card" title="物件の適正家賃調査にはSUUMOやHOME'Sなど賃貸サイトの活用が基本だが、現地で近隣アパートの物件名を検索する方法がより正確な相場把握につながる。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/GZfQoUPyzHY/mqdefault.jpg" alt="50平米以下の戸建ての適正家賃の設定方法" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">50平米以下の戸建ての適正家賃の設定方法</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">マイソク完全読解</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">建ぺい率・容積率簡易チェック</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=8WjOjU6N8tE" target="_blank" class="video-card" title="物件購入時は「順法性」を確認することが重要で、道路付け・市街化区域・建蔽率・容積率・増築なしの5項目が基準となる。業者への確認は「住宅ローン組めますか？」の一言">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/8WjOjU6N8tE/mqdefault.jpg" alt="増築未登記の見分け方と融資への影響" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">増築未登記の見分け方と融資への影響</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=QIvMB7UZ6J8" target="_blank" class="video-card" title="既存不適格物件は一概に否定できず、容積率・建蔽率オーバーの背景を紐解いた上で金融機関評価との関係から購入可否を判断すべきと解説している。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/QIvMB7UZ6J8/mqdefault.jpg" alt="既存不適格物件は一概に否定できず" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">既存不適格物件は一概に否定できず</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=uJMR88FsCik" target="_blank" class="video-card" title="増築登記で建蔽率・容積率がオーバーした物件は融資不可になるという重大なリスクがある。担保評価が実質ゼロとなり、現金購入以外の手法がなくなる点を特に警戒すべきだ。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/uJMR88FsCik/mqdefault.jpg" alt="増築登記で建蔽率・容積率がオーバーした物件は融資不可になるという重大なリスクがある" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">増築登記で建蔽率・容積率がオーバーした物件は融資不可になるという重大なリスクがある</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">再建築可否の判定方法</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=6bQCAGYFge8" target="_blank" class="video-card" title="横須賀YRP野比駅徒歩3分の再建築不可物件を高利回りを理由に購入した事例を紹介。自ら「再建築不可物件は融資を引くべき」と主張していた立場と矛盾する判断の経緯を解">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/6bQCAGYFge8/mqdefault.jpg" alt="横須賀の再建築不可物件を高利回りで購入した事例紹介" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">横須賀の再建築不可物件を高利回りで購入した事例紹介</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=JY9eLFtVW7w" target="_blank" class="video-card" title="容積率オーバーや再建築不可など適法性のない物件はノンバンクでは融資可能だが、銀行はそれを知ると以後の融資を停止するリスクがある。違法・不適格物件への融資がなぜ銀">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/JY9eLFtVW7w/mqdefault.jpg" alt="融資がつかない戸建てに融資をつけると融資が止まるって本当？" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">融資がつかない戸建てに融資をつけると融資が止まるって本当？</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=QIvMB7UZ6J8" target="_blank" class="video-card" title="既存不適格物件は一概に否定できず、容積率・建蔽率オーバーの背景を紐解いた上で金融機関評価との関係から購入可否を判断すべきと解説している。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/QIvMB7UZ6J8/mqdefault.jpg" alt="既存不適格物件は一概に否定できず" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">既存不適格物件は一概に否定できず</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">危険ワード発見トレーニング</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div></div>
+    </div>
+    <div class="unit" id="unit5">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">📊</span>
+          <div><div class="un">第5単位</div><div class="unm">収益分析演習</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:40%"></div></div>
+          <span class="pl">2/5</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">表面利回りと実質利回り</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=bprgPxn0Qz8" target="_blank" class="video-card" title="卓建協会のゴルフ縁で紹介を受け、表面利回り7.5%・物件価格1億円・融資9500万円の物件を取得した事例が紹介されている。現在7部屋前後を稼働させており、人脈活">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/bprgPxn0Qz8/mqdefault.jpg" alt="卓建協会のゴルフ縁で紹介を受け" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">卓建協会のゴルフ縁で紹介を受け</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=dy8OsGkGRUY" target="_blank" class="video-card" title="横浜市深谷エリアで750万円・表面利回り約12%の戸建て物件をフルローンで購入した事例を紹介。昭和54年築の増築違反部分は適法化手続き後に取得するという順法性へ">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/dy8OsGkGRUY/mqdefault.jpg" alt="横浜市深谷エリアで750万円・表面利回り約12%の戸建て物件をフルローンで購入した事例を紹介" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">横浜市深谷エリアで750万円・表面利回り約12%の戸建て物件をフルローンで購入した事例を紹介</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=HNmWJzq02JE" target="_blank" class="video-card" title="10万円で購入した物件に月2.9万円の賃貸が決まり、表面利回り340%超が実現した事例を紹介する。ただし高利回りの数字に惑わされず実態を見極める重要性をあわせて">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/HNmWJzq02JE/mqdefault.jpg" alt="10万円で購入した物件に月2.9万円の賃貸が決まり" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">10万円で購入した物件に月2.9万円の賃貸が決まり</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">CCRの意味と活用</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">CF率の計算方法</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">金利別シミュレーション演習</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">修繕費の見積もり思考</span>
+            <span class="vc">1本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=1xrb2xM6xF4" target="_blank" class="video-card" title="戸建内見では最初に外回りから確認し、排水・上下水道の引込状況や境界紛争の有無を売主に確認することがポイント。水回りは修繕費が最も高くなるため重点的にチェックし、">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/1xrb2xM6xF4/mqdefault.jpg" alt="教えてバランスさん、戸建の現地内覧どこ見ればいいの？" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">教えてバランスさん、戸建の現地内覧どこ見ればいいの？</span>
+              </div>
+            </a></div>
+        </div></div>
+    </div>
+    <div class="unit" id="unit6">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">📊</span>
+          <div><div class="un">第6単位</div><div class="unm">出口逆算戦略論</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:80%"></div></div>
+          <span class="pl">4/5</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">残債推移の読み方</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">5年後売却シミュレーション</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=bJ-KtD7RBT0" target="_blank" class="video-card" title="250万円で購入したテラスハウスを1050万円で売却し、約4倍の売却益を達成した事例を紹介。安く仕入れ高く売る戦略の有効性を、現金決済による確実な成約で示した。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/bJ-KtD7RBT0/mqdefault.jpg" alt="250万円で購入したテラスハウスを1050万円で売却し" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">250万円で購入したテラスハウスを1050万円で売却し</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=fx_NyeUVZEk" target="_blank" class="video-card" title="不動産投資の資金確保には「貯める・稼ぐ・借りる・売却」の4手段があるが、年収700万でも年間貯蓄は約120万円に留まり「貯める」は最難関だ。資産拡大には収入増加">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/fx_NyeUVZEk/mqdefault.jpg" alt="不動産投資の資金確保には「貯める・稼ぐ・借りる・売却」の4手段があるが" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産投資の資金確保には「貯める・稼ぐ・借りる・売却」の4手段があるが</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=gYP_4-u8Ljg" target="_blank" class="video-card" title="不動産賃貸の出口戦略では、ローン残高の減少ペースと家賃下落ペースの比較が重要な判断基準になる。家賃下落が速いエリアは売却価格が残債を下回るリスクが高く、購入を避">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/gYP_4-u8Ljg/mqdefault.jpg" alt="不動産賃貸の出口戦略では" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産賃貸の出口戦略では</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">譲渡税の基礎</span>
+            <span class="vc">2本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=1O4k2Rc_6jI" target="_blank" class="video-card" title="不動産を個人で売却する際、所有期間5年以下の短期譲渡は約40%課税されるが、「5年経過＝長期」と誤解しやすい判定基準の落とし穴に注意が必要だ。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/1O4k2Rc_6jI/mqdefault.jpg" alt="間違えると2倍の税金！長期譲渡と5年の罠" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">間違えると2倍の税金！長期譲渡と5年の罠</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=vS2NnS5xnS8" target="_blank" class="video-card" title="不動産売却時の長期・短期譲渡区分は「売却年の1月1日基準」で判定されるため、6回正月を迎えた年に売却すれば5年超の長期税率が適用される。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/vS2NnS5xnS8/mqdefault.jpg" alt="不動産売却時の長期・短期譲渡区分は「売却年の1月1日基準」で判定されるため" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産売却時の長期・短期譲渡区分は「売却年の1月1日基準」で判定されるため</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">インフレ時代の出口戦略</span>
+            <span class="vc">2本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=1RNYmfxZ9l4" target="_blank" class="video-card" title="インフレを背景に家賃を一律5%または3,000円値上げする方針を取り、入居者との交渉経緯を紹介。値上げ交渉は長引くと消耗するため、断られたら退去も辞さないという">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/1RNYmfxZ9l4/mqdefault.jpg" alt="インフレを背景に家賃を一律5%または3,000円値上げする方針を取り" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">インフレを背景に家賃を一律5%または3,000円値上げする方針を取り</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=Pc-444-I050" target="_blank" class="video-card" title="不動産投資の利回り向上策として、情勢に応じた家賃増額請求の重要性を解説。契約更新のタイミングで段階的に家賃を上げることが収益率アップの秘訣とされる。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/Pc-444-I050/mqdefault.jpg" alt="不動産投資の利回り向上策として" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産投資の利回り向上策として</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">出口から逆算した購入判断</span>
+            <span class="vc">2本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=gYP_4-u8Ljg" target="_blank" class="video-card" title="不動産賃貸の出口戦略では、ローン残高の減少ペースと家賃下落ペースの比較が重要な判断基準になる。家賃下落が速いエリアは売却価格が残債を下回るリスクが高く、購入を避">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/gYP_4-u8Ljg/mqdefault.jpg" alt="不動産賃貸の出口戦略では" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産賃貸の出口戦略では</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=N8U11nx27UQ" target="_blank" class="video-card" title="5年前に建てた新築アパートを売却した体験談を通じ、キャピタルゲイン狙いの不動産投資の流れを紹介。横浜物件を3500万で建設し4500万で売却、その益を次の土地購">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/N8U11nx27UQ/mqdefault.jpg" alt="5年前に建てた新築アパートを売却した体験談を通じ" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">5年前に建てた新築アパートを売却した体験談を通じ</span>
+              </div>
+            </a></div>
+        </div></div>
+    </div></div>
+  </section>
+  <section class="faculty" id="faculty3">
+    <div class="fac-hd">
+      <span class="fi">🏗</span>
+      <h2>第Ⅲ学部：現場実践学部（Field Research）</h2>
+    </div>
+    <div class="units-grid">
+    <div class="unit" id="unit7">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">🏗</span>
+          <div><div class="un">第7単位</div><div class="unm">現地調査技術</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:20%"></div></div>
+          <span class="pl">1/5</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">駅距離体感法</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">周辺環境チェック項目</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">ハザードマップ確認方法</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">夜の街歩きチェック法</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">管理状態の見抜き方</span>
+            <span class="vc">1本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=rMp2KdhDYeE" target="_blank" class="video-card" title="個人所有物件の管理料収入を法人売上として計上する方法と、融資審査での有効性を議論。継続的に売上を計上し実績を積むことが、金融機関からの信頼獲得に重要とされる。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/rMp2KdhDYeE/mqdefault.jpg" alt="個人所有物件の管理料収入を法人売上として計上する方法と" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">個人所有物件の管理料収入を法人売上として計上する方法と</span>
+              </div>
+            </a></div>
+        </div></div>
+    </div>
+    <div class="unit" id="unit8">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">🏗</span>
+          <div><div class="un">第8単位</div><div class="unm">建物診断基礎</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:40%"></div></div>
+          <span class="pl">2/5</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">外壁・屋根の劣化判定</span>
+            <span class="vc">2本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=F8CQuaWkeIM" target="_blank" class="video-card" title="外壁塗装は賃料相場を上げられないため基本的に不要だが、有効期間延長を目的とした大規模修繕は状況次第で検討する価値がある。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/F8CQuaWkeIM/mqdefault.jpg" alt="外壁塗装は賃料相場を上げられないため基本的に不要だが" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">外壁塗装は賃料相場を上げられないため基本的に不要だが</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=qy3Ww6FSIxw" target="_blank" class="video-card" title="JR沿線徒歩7分の物件を、元の取得価格500万円から50万円（90%値引き）で購入した事例を紹介している。外壁のひび割れや床の腐食など建物の物理的瑕疵が大幅な価">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/qy3Ww6FSIxw/mqdefault.jpg" alt="2年前に500万円で買った土地をなんと昨日50万円で売ってもらいました。" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">2年前に500万円で買った土地をなんと昨日50万円で売ってもらいました。</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">傾きチェック方法</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">給排水リスク判定</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">擁壁・境界確認</span>
+            <span class="vc">2本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=1Eah4CoHreE" target="_blank" class="video-card" title="神奈川県・横須賀のイエローゾーン物件でオリックスの融資否決が相次いでおり、同エリアの擁壁物件を検討する投資家は審査リスクに特に注意が必要。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/1Eah4CoHreE/mqdefault.jpg" alt="神奈川県・横須賀のイエローゾーン物件でオリックスの融資否決が相次いでおり" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">神奈川県・横須賀のイエローゾーン物件でオリックスの融資否決が相次いでおり</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=fI5LPDAgDRc" target="_blank" class="video-card" title="横須賀で7物件を実見学し、購入時の注意点としてリーチ・境界線・道路付けを解説後、神田で勉強会を開催した一日の活動報告。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/fI5LPDAgDRc/mqdefault.jpg" alt="横須賀で7物件を実見学し" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">横須賀で7物件を実見学し</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">修繕見積もりヒアリング技術</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div></div>
+    </div></div>
+  </section>
+  <section class="faculty" id="faculty4">
+    <div class="fac-hd">
+      <span class="fi">🤝</span>
+      <h2>第Ⅳ学部：交渉戦略学部（Negotiation）</h2>
+    </div>
+    <div class="units-grid">
+    <div class="unit" id="unit9">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">🤝</span>
+          <div><div class="un">第9単位</div><div class="unm">買付判断理論</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:60%"></div></div>
+          <span class="pl">3/5</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">GO基準の作り方</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=1wlmGfeQCyA" target="_blank" class="video-card" title="中古物件の内見では水回りと雨漏りを最優先で確認し、染みが進行中か既に是正済みかを見極めることが重要。地盤沈下している物件は絶対に手を出さないという明確な判断基準">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/1wlmGfeQCyA/mqdefault.jpg" alt="中古物件の内見では水回りと雨漏りを最優先で確認し" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">中古物件の内見では水回りと雨漏りを最優先で確認し</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=gM79OgClirQ" target="_blank" class="video-card" title="不動産投資セミナーの4・5月企画を検討中で、初心者参加者から「買い方・判断基準・物件の持ち込み方が分からない」という声を受け、初心者向け内容の開催を検討している">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/gM79OgClirQ/mqdefault.jpg" alt="不動産投資セミナーの4・5月企画を検討中で" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産投資セミナーの4・5月企画を検討中で</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=GooIZcMBf5A" target="_blank" class="video-card" title="不動産投資における金融電卓を使った複雑な計算手法の是非を議論。利回りが低くても数値上「買い」と判断する営業手法を紹介しつつ、自身の投資判断基準との違いを検証する">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/GooIZcMBf5A/mqdefault.jpg" alt="不動産投資における金融電卓を使った複雑な計算手法の是非を議論" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産投資における金融電卓を使った複雑な計算手法の是非を議論</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">指値幅算出ロジック</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">同時買付戦略</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">感情と合理の分離技術</span>
+            <span class="vc">1本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=amfS1YuPhLU" target="_blank" class="video-card" title="物件購入で成果を出すコツとして「物件への執着をしないこと」が最も重要だと解説している。気に入った物件でも冷静さを保ち、感情的な判断を避けることが多数取得の鍵とな">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/amfS1YuPhLU/mqdefault.jpg" alt="物件購入で成果を出すコツとして「物件への執着をしないこと」が最も重要だと解説している" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">物件購入で成果を出すコツとして「物件への執着をしないこと」が最も重要だと解説している</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">買ってはいけない物件判断</span>
+            <span class="vc">1本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=" target="_blank" class="video-card" title="小規模物件の保有方針を「利益1000万円まで保有」から回転率重視に転換し、隣接2棟をバルク売却した。利回り10%・投資アテンド付きでサロン会員に譲渡し、6年前2">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi//mqdefault.jpg" alt="" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text"></span>
+              </div>
+            </a></div>
+        </div></div>
+    </div>
+    <div class="unit" id="unit10">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">🤝</span>
+          <div><div class="un">第10単位</div><div class="unm">交渉実践論</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:40%"></div></div>
+          <span class="pl">2/5</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">指値根拠資料作成法</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">業者心理の理解</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">再交渉のタイミング</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">満額勝負の判断</span>
+            <span class="vc">1本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=iCnP6N96zSE" target="_blank" class="video-card" title="横須賀の2.5億円物件がオーバーローンで決済成功。融資審査の厳しい局面でも満額以上の融資を引き出せた実例を報告している。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/iCnP6N96zSE/mqdefault.jpg" alt="横須賀の2.5億円物件がオーバーローンで決済成功" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">横須賀の2.5億円物件がオーバーローンで決済成功</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">競合対策戦術</span>
+            <span class="vc">1本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=bC0oAhqWktQ" target="_blank" class="video-card" title="高く貸すには不動産屋の否定的意見に惑わされず、まず高値で募集することが最重要。家賃値下げは最終手段とし、差別化によって競合より高い賃料を実現するのが基本戦略だ。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/bC0oAhqWktQ/mqdefault.jpg" alt="高く貸すには不動産屋の否定的意見に惑わされず" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">高く貸すには不動産屋の否定的意見に惑わされず</span>
+              </div>
+            </a></div>
+        </div></div>
+    </div></div>
+  </section>
+  <section class="faculty" id="faculty5">
+    <div class="fac-hd">
+      <span class="fi">🏦</span>
+      <h2>第Ⅴ学部：金融工学部（Finance）</h2>
+    </div>
+    <div class="units-grid">
+    <div class="unit" id="unit11">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">🏦</span>
+          <div><div class="un">第11単位</div><div class="unm">銀行攻略基礎</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:20%"></div></div>
+          <span class="pl">1/5</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">銀行種類別特徴</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=1Eah4CoHreE" target="_blank" class="video-card" title="神奈川県・横須賀のイエローゾーン物件でオリックスの融資否決が相次いでおり、同エリアの擁壁物件を検討する投資家は審査リスクに特に注意が必要。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/1Eah4CoHreE/mqdefault.jpg" alt="神奈川県・横須賀のイエローゾーン物件でオリックスの融資否決が相次いでおり" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">神奈川県・横須賀のイエローゾーン物件でオリックスの融資否決が相次いでおり</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=3AbxjNYA3aI" target="_blank" class="video-card" title="ノンバンクを初手で使うと金融機関に信用力を疑われるため、融資を借りる順番が重要。資産管理法人では役員給与を受け取らなければ副業がバレにくく、エリア選定の再現性が">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/3AbxjNYA3aI/mqdefault.jpg" alt="ノンバンクを初手で使うと金融機関に信用力を疑われるため" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">ノンバンクを初手で使うと金融機関に信用力を疑われるため</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=5rYteLPZLkg" target="_blank" class="video-card" title="ノンバンク借り入れは担保価値のない物件に紐付く場合、銀行から評価ゼロと見なされる。規模拡大を目指すなら、担保価値のない物件への投資は銀行融資の障壁になるため注意">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/5rYteLPZLkg/mqdefault.jpg" alt="ノンバンク借り入れを初手で使ってはいけない理由" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">ノンバンク借り入れを初手で使ってはいけない理由</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">返済比率の正体</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">銀行が見ている3指標</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">プロフィールシート設計</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">事業計画書の型</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div></div>
+    </div>
+    <div class="unit" id="unit12">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">🏦</span>
+          <div><div class="un">第12単位</div><div class="unm">融資交渉実務</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:80%"></div></div>
+          <span class="pl">4/5</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">面談対策シミュレーション</span>
+            <span class="vc">1本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=AzsR-uhFknY" target="_blank" class="video-card" title="元静岡銀行融資課長経験者を財務顧問に迎え、銀行面談の同席支援や月次面談で融資戦略を強化している実践例を紹介。2月15日のセミナーでこの専門家と直接交流できる機会">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/AzsR-uhFknY/mqdefault.jpg" alt="元静岡銀行融資課長経験者を財務顧問に迎え" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">元静岡銀行融資課長経験者を財務顧問に迎え</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">金利・期間交渉術</span>
+            <span class="vc">2本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=1doZ6sYJoFM" target="_blank" class="video-card" title="横浜銀行子会社のL&Fアセットファイナンスを活用することで、通常20年が上限だった耐用年数超過物件への融資期間を延長できる可能性を紹介。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/1doZ6sYJoFM/mqdefault.jpg" alt="横浜銀行子会社のL&Fアセットファイナンスを活用することで" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">横浜銀行子会社のL&Fアセットファイナンスを活用することで</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=CpPPqCSMEp0" target="_blank" class="video-card" title="レオパレス2棟バルク6700万円の案件で融資期間が想定の15〜20年から10年に短縮され、利回り10%でも手出しが発生する結果になった。保証協会の審査条件が収益">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/CpPPqCSMEp0/mqdefault.jpg" alt="レオパレス物件6700万の有識感がまるまる。それ買うべき？" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">レオパレス物件6700万の有識感がまるまる。それ買うべき？</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">諸経費融資交渉</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=fVGwTQ6ZUTc" target="_blank" class="video-card" title="2.5億円の物件購入で金銭消費貸借契約を締結した結果、予想していたフルローンを超える2億5800万円のオーバーローンが承認された。物件価格を上回る融資額という予">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/fVGwTQ6ZUTc/mqdefault.jpg" alt="2.5億円の物件購入で金銭消費貸借契約を締結した結果" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">2.5億円の物件購入で金銭消費貸借契約を締結した結果</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=Ph_M-AC-xGc" target="_blank" class="video-card" title="2.5億円の不動産購入で金銭消費貸借契約を締結したところ、フルローンを超えるオーバーローンが実現し、想定以上の融資を受けられた事例を報告している。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/Ph_M-AC-xGc/mqdefault.jpg" alt="2.5億円の不動産購入で金銭消費貸借契約を締結したところ" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">2.5億円の不動産購入で金銭消費貸借契約を締結したところ</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=30TZMEZivxk" target="_blank" class="video-card" title="不動産投資サロンの運営者が財務顧問・司法書士顧問に続き、新たに建築士を顧問として迎え入れたことを紹介。元銀行員の財務顧問によりオーバーローン融資が実現するなど、">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/30TZMEZivxk/mqdefault.jpg" alt="顧問建築士ワンさんによるズーム定例相談会やったよ。" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">顧問建築士ワンさんによるズーム定例相談会やったよ。</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">団信とリスク管理</span>
+            <span class="vc">1本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=U__Mid1I39s" target="_blank" class="video-card" title="持ち家か賃貸かという議題で、不動産業者出身の話者は持ち家一択と主張する。その主な理由として、団体信用生命保険（団信）にトータルで安価に加入できる点を挙げている。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/U__Mid1I39s/mqdefault.jpg" alt="教えてバランス。賃貸がいいの?持ちがいいの?どっちなんだい?" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">教えてバランス。賃貸がいいの?持ちがいいの?どっちなんだい?</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">融資承認後の注意点</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div></div>
+    </div></div>
+  </section>
+  <section class="faculty" id="faculty6">
+    <div class="fac-hd">
+      <span class="fi">📜</span>
+      <h2>第Ⅵ学部：契約実務学部（Legal）</h2>
+    </div>
+    <div class="units-grid">
+    <div class="unit" id="unit13">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">📜</span>
+          <div><div class="un">第13単位</div><div class="unm">売買契約論</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:40%"></div></div>
+          <span class="pl">2/5</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">重説重要ポイント</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=3Vn7VaAgya0" target="_blank" class="video-card" title="不動産売買契約時の重要事項説明書や特約事項を専門家がチェックするサービスをサロン内で試験提供している。多数の契約書を扱うことでチェックポイントが体系化され、契約">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/3Vn7VaAgya0/mqdefault.jpg" alt="売買契約書チェックサービス、サロン内で試験提供" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">売買契約書チェックサービス、サロン内で試験提供</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=CCXKNJxwIgI" target="_blank" class="video-card" title="宅建士は重要事項説明書に記名押印し内容の正確性に法的責任を負うため、誤記や虚偽記載は担当者に直接責任が及ぶ。このリスクに対応する専用保険が約10年前から存在し、">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/CCXKNJxwIgI/mqdefault.jpg" alt="宅建士は重要事項説明書に記名押印し内容の正確性に法的責任を負うため" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">宅建士は重要事項説明書に記名押印し内容の正確性に法的責任を負うため</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=" target="_blank" class="video-card" title="小規模物件の保有方針を「利益1000万円まで保有」から回転率重視に転換し、隣接2棟をバルク売却した。利回り10%・投資アテンド付きでサロン会員に譲渡し、6年前2">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi//mqdefault.jpg" alt="" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text"></span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">42条2項道路理解</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">私道・越境問題</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">ローン特約理解</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">違約リスク管理</span>
+            <span class="vc">2本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=3SDCvcOYkng" target="_blank" class="video-card" title="決済1週間前に売主から一方的に契約解除を通告された事例で、契約書の手付解除条項の記載に問題がある可能性を指摘している。宅建業者が売主の場合の解除条件の文言確認が">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/3SDCvcOYkng/mqdefault.jpg" alt="決済1週間前に売主から一方的に契約解除を通告された事例で" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">決済1週間前に売主から一方的に契約解除を通告された事例で</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=i0ME51HfNjI" target="_blank" class="video-card" title="サブリース契約で最も注意すべきは解約条件と家賃変更条項の確認だ。違約金が家賃半年分に上るケースや、オーナーの同意なく家賃を変更できる契約書も存在する。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/i0ME51HfNjI/mqdefault.jpg" alt="サブリース契約で最も注意すべきは解約条件と家賃変更条項の確認だ" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">サブリース契約で最も注意すべきは解約条件と家賃変更条項の確認だ</span>
+              </div>
+            </a></div>
+        </div></div>
+    </div>
+    <div class="unit" id="unit14">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">📜</span>
+          <div><div class="un">第14単位</div><div class="unm">金消契約論</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:40%"></div></div>
+          <span class="pl">2/5</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">金消の流れ</span>
+            <span class="vc">2本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=fVGwTQ6ZUTc" target="_blank" class="video-card" title="2.5億円の物件購入で金銭消費貸借契約を締結した結果、予想していたフルローンを超える2億5800万円のオーバーローンが承認された。物件価格を上回る融資額という予">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/fVGwTQ6ZUTc/mqdefault.jpg" alt="2.5億円の物件購入で金銭消費貸借契約を締結した結果" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">2.5億円の物件購入で金銭消費貸借契約を締結した結果</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=Ph_M-AC-xGc" target="_blank" class="video-card" title="2.5億円の不動産購入で金銭消費貸借契約を締結したところ、フルローンを超えるオーバーローンが実現し、想定以上の融資を受けられた事例を報告している。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/Ph_M-AC-xGc/mqdefault.jpg" alt="2.5億円の不動産購入で金銭消費貸借契約を締結したところ" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">2.5億円の不動産購入で金銭消費貸借契約を締結したところ</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">在籍確認対策</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">保険内容確認</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=2gPi63Fn2GA" target="_blank" class="video-card" title="不動産投資のリスクヘッジに不可欠な火災保険をテーマにしたオフラインセミナーを開催。火災保険アカデミーの専門家を招き、適切な火災保険の選び方を詳しく解説する。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/2gPi63Fn2GA/mqdefault.jpg" alt="不動産投資のリスクヘッジに不可欠な火災保険をテーマにしたオフラインセミナーを開催" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産投資のリスクヘッジに不可欠な火災保険をテーマにしたオフラインセミナーを開催</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=63rxZ7RWQbU" target="_blank" class="video-card" title="信用金庫の融資条件として勧められる定型火災保険は、保険会社の商品より条件が劣る場合がある。融資実行後に有利な保険会社へ切り替える戦略と、金融機関との関係悪化リス">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/63rxZ7RWQbU/mqdefault.jpg" alt="信用金庫の融資条件として勧められる定型火災保険は" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">信用金庫の融資条件として勧められる定型火災保険は</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=dQtyzurquoU" target="_blank" class="video-card" title="火災保険アカデミー塾長の葛西氏が、2018年にロバート・キヨサキの著書を契機に不動産投資を開始し、現在は山口県下関のRC物件など累計1000万円超の収益を得るに">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/dQtyzurquoU/mqdefault.jpg" alt="火災保険アカデミー塾長の葛西氏が" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">火災保険アカデミー塾長の葛西氏が</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">返済開始設計</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">実行前NG行動</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div></div>
+    </div></div>
+  </section>
+  <section class="faculty" id="faculty7">
+    <div class="fac-hd">
+      <span class="fi">🏢</span>
+      <h2>第Ⅶ学部：運用経営学部（Management）</h2>
+    </div>
+    <div class="units-grid">
+    <div class="unit" id="unit15">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">🏢</span>
+          <div><div class="un">第15単位</div><div class="unm">決済・引渡し実務</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:50%"></div></div>
+          <span class="pl">2/4</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">決済当日の流れ</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=k7ZgQLeTnG0" target="_blank" class="video-card" title="不動産の「三ため目契約（第三者のためにする契約）」は、法律で禁止された中間省略契約の後継として登場した取引手法だ。売主A・買主B・第三者Cの三者間で所有権移転を">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/k7ZgQLeTnG0/mqdefault.jpg" alt="不動産の「三ため目契約（第三者のためにする契約）」は" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産の「三ため目契約（第三者のためにする契約）」は</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=AyeL8y4qQ9g" target="_blank" class="video-card" title="不動産決済日前日の朝11時時点で本審査承認が未取得というヒヤヒヤ事例を紹介。視点決済の仕組みと融資承認タイミング管理の重要性が学べる内容。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/AyeL8y4qQ9g/mqdefault.jpg" alt="不動産決済日前日の朝11時時点で本審査承認が未取得というヒヤヒヤ事例を紹介" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産決済日前日の朝11時時点で本審査承認が未取得というヒヤヒヤ事例を紹介</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=cuCjbGeL6CM" target="_blank" class="video-card" title="約1億円・利回り11%の物件決済直後に雨漏りが発覚し、契約不適合責任を免責とした契約条件の下での対応方針を検討。決済日前後の発生タイミングによって売主・買主どち">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/cuCjbGeL6CM/mqdefault.jpg" alt="約1億円・利回り11%の物件決済直後に雨漏りが発覚し" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">約1億円・利回り11%の物件決済直後に雨漏りが発覚し</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">固都税精算</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">登記確認</span>
+            <span class="vc">2本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=x2-laoX_F98" target="_blank" class="video-card" title="不動産購入時の「順法性チェック」として、道路付け・市街化区域・建ぺい率・容積率・増築未登記の5項目を解説している。「住宅ローンが組めるか」を業者に確認するだけで">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/x2-laoX_F98/mqdefault.jpg" alt="不動産購入時の「順法性チェック」として" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産購入時の「順法性チェック」として</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=nezyFN2yI74" target="_blank" class="video-card" title="金融機関訪問時はA4一枚に属性・物件・金融資産・決算推移をまとめ、決算書や登記簿とセットで持参すると効果的だ。飛び込みからアポイントまで段階に応じた準備が融資交">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/nezyFN2yI74/mqdefault.jpg" alt="金融機関訪問時はA4一枚に属性・物件・金融資産・決算推移をまとめ" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">金融機関訪問時はA4一枚に属性・物件・金融資産・決算推移をまとめ</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">管理会社引継ぎ</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div></div>
+    </div>
+    <div class="unit" id="unit16">
+      <div class="unit-hd">
+        <div class="unit-title-row">
+          <span class="ui">🏢</span>
+          <div><div class="un">第16単位</div><div class="unm">運営基礎</div></div>
+        </div>
+        <div class="uprg">
+          <div class="pb"><div class="pf" style="width:40%"></div></div>
+          <span class="pl">2/5</span>
+        </div>
+      </div>
+      <div class="lc-wrap">
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">管理委託契約の読み方</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">月次収支管理法</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">空室対策基礎</span>
+            <span class="vc">3本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=B412r6O-tmw" target="_blank" class="video-card" title="不動産の繁忙期は1月中旬から始まるため、年始に業者へ挨拶・客付け依頼・物件仕入れのアクションを早めに起こすことが空室解消の鍵となる。年始の具体的な行動指針と繁忙">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/B412r6O-tmw/mqdefault.jpg" alt="不動産の繁忙期は1月中旬から始まるため" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">不動産の繁忙期は1月中旬から始まるため</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LhiICB6aWQU" target="_blank" class="video-card" title="元不動産仲介業者の経験を活かしたジモティーを使った客付けテクニックを解説。20年来のアットホーム愛用者として、独自の賃貸募集手法を紹介する。">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/LhiICB6aWQU/mqdefault.jpg" alt="客付けテクニック・ジモティー編" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">客付けテクニック・ジモティー編</span>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=n8MNO9FGUt0" target="_blank" class="video-card" title="不動産投資では利回りが低くても満室経営を実現すれば残債が減り投資として成立すると解説。ジモティ等を活用した小規模物件の客付けを最優先戦略として位置づけ、具体的手">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/n8MNO9FGUt0/mqdefault.jpg" alt="単身者向け物件の客付けの秘訣" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">単身者向け物件の客付けの秘訣</span>
+              </div>
+            </a></div>
+        </div>
+        <div class="lesson no-video">
+          <div class="lesson-header">
+            <span class="lc">📝</span>
+            <span class="lt">修繕計画作成</span>
+            <span class="cs">準備中</span>
+          </div>
+        </div>
+        <div class="lesson has-video">
+          <div class="lesson-header">
+            <span class="lc">✅</span>
+            <span class="lt">次の1棟への準備</span>
+            <span class="vc">1本</span>
+          </div>
+          <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=esJ94Ue8Pdw" target="_blank" class="video-card" title="ワンルーム区分マンション投資は節税目的には有効だが、規模拡大を目指す投資家には不向きな手法だ。融資枠を消費するため次の物件購入が難しくなり、不動産ポートフォリオ">
+              <div class="thumb-wrap">
+                <img src="https://img.youtube.com/vi/esJ94Ue8Pdw/mqdefault.jpg" alt="ワンルーム区分マンション投資はなぜ買っちゃいけないの？" loading="lazy"
+                     onerror="this.parentElement.innerHTML='<div class=tp>▶</div>'">
+                <div class="play-overlay">▶</div>
+              </div>
+              <div class="video-meta">
+                <span class="video-title-text">ワンルーム区分マンション投資はなぜ買っちゃいけないの？</span>
+              </div>
+            </a></div>
+        </div></div>
+    </div></div>
+  </section>
+</main>
+
+<footer>
+  <strong>BOD バランス大家大学</strong> — 一棟目取得学部<br>
+  動画タイトルは各動画の内容から自動抽出しています。準備中の授業は今後順次追加されます。
+</footer>
+</body>
+</html>
