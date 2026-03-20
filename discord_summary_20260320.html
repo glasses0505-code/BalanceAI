@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIバランスラボ Discord サマリ</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Sans',sans-serif;background:#f5f4f0;color:#1a1a18;padding:1.5rem}
+.root{max-width:960px;margin:0 auto}
+h1{font-size:18px;font-weight:500;margin-bottom:1.25rem;color:#1a1a18}
+.tab-bar{display:flex;gap:6px;margin-bottom:1.25rem;flex-wrap:wrap}
+.tab-btn{padding:6px 14px;border-radius:20px;border:0.5px solid #aaa;background:#fff;color:#555;font-size:13px;cursor:pointer;transition:all .15s}
+.tab-btn.active{background:#5DCAA5;border-color:#1D9E75;color:#04342C;font-weight:500}
+.tab-btn:hover:not(.active){background:#eee}
+.pane{display:none}
+.pane.active{display:block}
+.ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.ch-card{background:#fff;border:0.5px solid #ddd;border-radius:12px;padding:14px 16px}
+.ch-name{font-size:13px;font-weight:500;color:#1a1a18;margin-bottom:6px}
+.ch-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px;margin-bottom:8px;font-weight:500}
+.tag-active{background:#EAF3DE;color:#3B6D11}
+.tag-key{background:#E6F1FB;color:#185FA5}
+.tag-plan{background:#FAEEDA;color:#854F0B}
+.tag-empty{background:#F1EFE8;color:#5F5E5A}
+.tag-info{background:#EEEDFE;color:#534AB7}
+.ch-desc{font-size:13px;color:#555;line-height:1.6}
+.ch-date{font-size:11px;color:#999;margin-top:6px}
+.section-title{font-size:15px;font-weight:500;color:#1a1a18;margin-bottom:12px;padding-bottom:8px;border-bottom:0.5px solid #ddd}
+.day-block{display:flex;gap:0}
+.day-col{min-width:60px;padding-top:14px;padding-right:8px}
+.day-label{font-size:12px;font-weight:500;color:#1D9E75;white-space:nowrap}
+.day-events{flex:1;border-left:1.5px solid #ddd;padding:8px 0 16px 14px}
+.event{background:#fff;border:0.5px solid #ddd;border-radius:8px;padding:8px 12px;margin-bottom:8px}
+.event-ch{font-size:11px;color:#999;margin-bottom:3px}
+.event-body{font-size:13px;color:#1a1a18;line-height:1.55}
+.badge{display:inline-block;font-size:11px;padding:1px 7px;border-radius:10px;margin-right:4px;font-weight:500}
+.b-eng{background:#EAF3DE;color:#3B6D11}
+.b-biz{background:#E6F1FB;color:#185FA5}
+.b-sys{background:#EEEDFE;color:#534AB7}
+.b-idea{background:#FAEEDA;color:#854F0B}
+</style>
+</head>
+<body>
+<div class="root">
+  <h1>AIバランスラボ Discord サマリ</h1>
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="showTab('channels',this)">チャンネルサマリ</button>
+    <button class="tab-btn" onclick="showTab('week',this)">直近1週間のトピック</button>
+  </div>
+
+  <div id="channels" class="pane active">
+    <div class="ch-grid">
+
+      <div class="ch-card">
+        <div class="ch-name">🕊️ メイン板</div>
+        <span class="ch-tag tag-active">最活発</span>
+        <div class="ch-desc">最もアクティブな議論の場。収支シミュレーションプロンプト（北野さん・2.6万字）の共有と Gem 化、マイソク PDF の Gem 処理、スマサテ活用、BOS サービス説明まとめ（Notion）、キックオフ二次会議事録などが投稿された。</div>
+        <div class="ch-date">最終投稿 3/19</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">💡 アイディア</div>
+        <span class="ch-tag tag-key">重要</span>
+        <div class="ch-desc">路線価の API 取得方法（国土交通省・ZENRIN・国際航業）の研究、金融機関提案フロー（①〜⑤ステップ）の設計、Gem スクリーニングの課題整理。複数プロジェクトをプラグインとして提供する構想も議論。</div>
+        <div class="ch-date">最終投稿 3/13</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">🤖 ai技術情報</div>
+        <span class="ch-tag tag-key">重要</span>
+        <div class="ch-desc">NotebookLM・Gem 連携、Claude Code の活用事例（「鑑定さん」の開発背景）、REINS データ活用のスタートアップ事例、Claude Code で組織を作る手法の紹介、AI ツールエコシステムのポッドキャスト情報など。</div>
+        <div class="ch-date">最終投稿 3/12</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">自動物あげシステム</div>
+        <span class="ch-tag tag-active">進行中</span>
+        <div class="ch-desc">Claude Code で健美家・楽街の物件情報スクレイピングを試作成功。ぶつ上げ君（物件自動投稿 SaaS）社長との打合せを 3/27 に設定。レインズ課題（API・路線価取得）と登記簿図書館 API の活用も検討中。</div>
+        <div class="ch-date">最終投稿 3/18</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">属性と物件情報投げれば最適金融機関提案</div>
+        <span class="ch-tag tag-active">進行中</span>
+        <div class="ch-desc">Yusuke Sakai が CF シミュレーターの MCP を試作しデモ公開。金融機関データベースを Notion へ格納。AI が CF シミュを実行した上で最適金融機関を提案する設計を議論。</div>
+        <div class="ch-date">最終投稿 3/15</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">テレフォ〜ンショッピング自動化</div>
+        <span class="ch-tag tag-plan">計画中</span>
+        <div class="ch-desc">エージェント勉強会（日程候補 3/28・4/4・4/11）のアジェンダを大木さんが策定。Claude Code でマイソク PDF 20 枚を分析し物件選定・詳細分析レポートを作成するデモも実施。</div>
+        <div class="ch-date">最終投稿 3/17</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">ai秘書</div>
+        <span class="ch-tag tag-active">進行中</span>
+        <div class="ch-desc">かばんもちおおきが LINE インターフェースで動く AI 秘書を試作。スマホから使いやすい UI を実現。3/18 に初版完成を報告。</div>
+        <div class="ch-date">最終投稿 3/18</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">notionでサロンコンテンツ整理</div>
+        <span class="ch-tag tag-plan">継続</span>
+        <div class="ch-desc">BOD（バランス大家大学）のカリキュラム整理。YouTube 動画テキスト（750 本）を元に HTML ナビゲーションをいっかんが試作。大木さんが CSV・TXT データを共有。BOD カリキュラムの体系化を目指す。</div>
+        <div class="ch-date">最終投稿 3/15</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">顧客DB</div>
+        <span class="ch-tag tag-plan">設計中</span>
+        <div class="ch-desc">ポイント管理システム（Google フォーム→スプシ自動転記→台帳）をだいあさんが構築中。会員 ID・課金管理・班分け変更履歴の管理設計を議論。シンプルな運用を優先すべきといういっかんの意見も。</div>
+        <div class="ch-date">最終投稿 3/12</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">個別面談データベース</div>
+        <span class="ch-tag tag-plan">着手済み</span>
+        <div class="ch-desc">LINE オープンチャットの個別面談内容を手動抽出しデータベース化。ritz さんが Excel でデータ整形。ChatGPT による面談内容の分析（成功者の6つの特徴の抽出）を Hiroshi さんが実施。</div>
+        <div class="ch-date">最終投稿 3/9</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">長坂一寛（個人メモ）</div>
+        <span class="ch-tag tag-info">情報整理</span>
+        <div class="ch-desc">いっかんの個人情報整理チャンネル。NotebookLM 単体 vs Gem+NotebookLM の詳細比較、REINS の課題整理、協同住宅ローンの調査、Gem の一般論化問題などの考察が残る。</div>
+        <div class="ch-date">最終投稿 3/18</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">バランス大家サロンホームページ作成</div>
+        <span class="ch-tag tag-plan">試作</span>
+        <div class="ch-desc">かばんもちおおきが Claude Code でサロンホームページを試作し GitHub Pages で公開。Notion でも公開設定されている。</div>
+        <div class="ch-date">最終投稿 3/9</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">🙋 自己紹介</div>
+        <span class="ch-tag tag-info">メンバー情報</span>
+        <div class="ch-desc">5名が自己紹介投稿（いっかん・Yusuke Sakai・かおりん・かばんもちおおき・日比谷真理）。投資スタイル・保有室数・使用ツールのフォーマットで整理。日比谷さんは Gem スクリーニングの現状課題も共有。</div>
+        <div class="ch-date">最終投稿 2/19</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">☕ 雑談</div>
+        <span class="ch-tag tag-info">情報共有</span>
+        <div class="ch-desc">協同住宅ローン（資産形成ローン）の詳細情報を共有。3000万円以下フルローン可・変動金利 2.625%〜・年収 600 万円以上・一生一回原則など。</div>
+        <div class="ch-date">最終投稿 3/5</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">収益計算シミュレーション / 客付けFAX営業</div>
+        <span class="ch-tag tag-empty">ファイル共有のみ</span>
+        <div class="ch-desc">収益計算は Excel 5 点、FAX 営業はリスト関連 Excel 2 点が共有済み。議論はなく次のステップ待ち。</div>
+        <div class="ch-date">最終投稿 3/13</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">仕掛案件工程管理表WBS</div>
+        <span class="ch-tag tag-plan">試作完了</span>
+        <div class="ch-desc">複数案件の進捗管理（検討中〜入居済みまで8ステータス）を Notion で試作。Notion AI からチャットで項目追加も可能。</div>
+        <div class="ch-date">最終投稿 2/17</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">📣 アナウンス / 📏 ガイドライン / 🗣️ 一般</div>
+        <span class="ch-tag tag-info">運営系</span>
+        <div class="ch-desc">チャンネル構成の見直し（3/7）と「メイン板」新設を周知。DiscordのAPI抽出スクリプト（Claude Code 作）の完成を3/15に報告。</div>
+        <div class="ch-date">最終投稿 3/15</div>
+      </div>
+
+      <div class="ch-card">
+        <div class="ch-name">物件情報スコアリング自動化 / 信金ふと客自動検索 / 金融機関アピール文書 / 買い付け自動発射 / aiバランス大家</div>
+        <span class="ch-tag tag-empty">未着手・停止</span>
+        <div class="ch-desc">スコアリングは「やめる」の1投稿のみ。その他は空チャンネルで今後着手予定。</div>
+        <div class="ch-date">—</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="week" class="pane">
+    <div class="section-title">3月13日（木）〜 3月19日（水）の主要トピック</div>
+
+    <div class="day-block">
+      <div class="day-col"><div class="day-label">3/13</div></div>
+      <div class="day-events">
+        <div class="event">
+          <div class="event-ch">#💡アイディア</div>
+          <div class="event-body"><span class="badge b-idea">構想</span>サロン会員増加に向けた「尖った特化型サービス」としての AI プラグイン提供構想を議論。Claude Code 活用スキル習得の必要性を認識。</div>
+        </div>
+        <div class="event">
+          <div class="event-ch">#長坂一寛</div>
+          <div class="event-body"><span class="badge b-sys">個人</span>Cowork がスマホ・Chromebook 非対応（PC のみ）と判明。高松出張メモ。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-col"><div class="day-label">3/14</div></div>
+      <div class="day-events">
+        <div class="event">
+          <div class="event-ch">#🕊️メイン板</div>
+          <div class="event-body"><span class="badge b-biz">ツール</span>Hiroshi さんが<strong>スマサテ</strong>（無料）を活用した家賃推計グラフを共有。いっかんが住所・駅徒歩から 35 年間の家賃下落率を自動算出できるサービスを質問。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-col"><div class="day-label">3/15</div></div>
+      <div class="day-events">
+        <div class="event">
+          <div class="event-ch">#属性と物件情報投げれば最適金融機関提案</div>
+          <div class="event-body"><span class="badge b-eng">開発</span>Yusuke Sakai が<strong>CF シミュレーター MCP</strong> を試作・デモ公開。ブラウザからは Security 制約があるためデスクトップアプリ推奨。金融機関提案と連携する設計を提示。</div>
+        </div>
+        <div class="event">
+          <div class="event-ch">#notionでサロンコンテンツ整理</div>
+          <div class="event-body"><span class="badge b-sys">コンテンツ</span>いっかんが BOD カリキュラムの HTML ナビゲーション v2 を試作し共有（精度 10% だが改善の方向性を提示）。</div>
+        </div>
+        <div class="event">
+          <div class="event-ch">#🗣️一般</div>
+          <div class="event-body"><span class="badge b-eng">ツール</span>Discord API でチャンネルメッセージを抽出する Python スクリプト（Claude Code 製）の完成を報告・共有案内。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-col"><div class="day-label">3/16</div></div>
+      <div class="day-events">
+        <div class="event">
+          <div class="event-ch">#バランスサロンのイベントカレンダ自動化</div>
+          <div class="event-body"><span class="badge b-biz">資料</span>バランス大家サロンのイベントカレンダー PDF を共有。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-col"><div class="day-label">3/17</div></div>
+      <div class="day-events">
+        <div class="event">
+          <div class="event-ch">#テレフォ〜ンショッピング自動化</div>
+          <div class="event-body"><span class="badge b-biz">イベント</span>かばんもちおおきが<strong>エージェント勉強会</strong>の日程候補（3/28・4/4・4/11）とアジェンダ（ハルキ師匠挨拶・成功事例共有・マイソクショッピング構想）を提案。</div>
+        </div>
+        <div class="event">
+          <div class="event-ch">#テレフォ〜ンショッピング自動化</div>
+          <div class="event-body"><span class="badge b-eng">開発</span>Claude Code でマイソク PDF 約 20 枚を読み込み、物件を 3〜5 件に絞り込んだ上で詳細分析レポートを作成するフローを試作。</div>
+        </div>
+        <div class="event">
+          <div class="event-ch">#自動物あげシステム</div>
+          <div class="event-body"><span class="badge b-eng">開発</span>Claude Code で<strong>健美家・楽街の物件スクレイピング</strong>システムを試作成功。ぶつ上げ君社長との打合せを 3/27 18:00 に設定。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-col"><div class="day-label">3/18</div></div>
+      <div class="day-events">
+        <div class="event">
+          <div class="event-ch">#🕊️メイン板</div>
+          <div class="event-body"><span class="badge b-biz">重要</span>北野さんの<strong>2.6万文字超の収支シミュレーションプロンプト</strong>をいっかんが共有。かばんもちおおきが Gem 化し BOS の「BOSの歩き方まとめ」に公開。「マイソクを貼って収支計算/事業計画書作成」を指示するだけで動作。</div>
+        </div>
+        <div class="event">
+          <div class="event-ch">#🕊️メイン板</div>
+          <div class="event-body"><span class="badge b-sys">情報</span>MCP サーバーの新情報記事（IT メディア）を共有。かばんもちおおきが API キーのコスト問題から「GEM で提供する」方式が現実的と判断。</div>
+        </div>
+        <div class="event">
+          <div class="event-ch">#自動物あげシステム</div>
+          <div class="event-body"><span class="badge b-eng">開発</span>メール・LINE 連携機能を追加中。レインズの課題（課金・路線価 API）はぶつ上げ君社長に確認予定。</div>
+        </div>
+        <div class="event">
+          <div class="event-ch">#ai秘書</div>
+          <div class="event-body"><span class="badge b-eng">開発</span>かばんもちおおきが<strong>LINE インターフェースの AI 秘書</strong>を試作・初版完成。スマホから使いやすいとの評価。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-col"><div class="day-label">3/19</div></div>
+      <div class="day-events">
+        <div class="event">
+          <div class="event-ch">#🕊️メイン板</div>
+          <div class="event-body"><span class="badge b-biz">情報</span>「<strong>鑑定さん</strong>」のアップデート情報（ブラウザで閲覧している物件情報を自動収集・整形するプラグイン）を共有。ゲームチェンジャー的な機能として注目。</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
