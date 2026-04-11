@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>バランスAI Lab Discord サマリ 2026-04-11</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hiragino Sans', 'Meiryo', sans-serif; background: #1a1a2e; color: #e0e0e0; line-height: 1.7; }
+  header { background: linear-gradient(135deg, #16213e, #0f3460); padding: 32px 24px; border-bottom: 2px solid #5865f2; }
+  header h1 { font-size: 1.6rem; color: #fff; margin-bottom: 8px; }
+  header .meta { color: #aaa; font-size: 0.9rem; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px 16px; }
+
+  /* 週次トピック */
+  .weekly-section { background: #16213e; border: 1px solid #5865f2; border-radius: 12px; padding: 24px; margin-bottom: 32px; }
+  .weekly-section h2 { color: #5865f2; font-size: 1.2rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .topic-card { background: #0f3460; border-left: 4px solid #7289da; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
+  .topic-card .topic-title { font-weight: bold; color: #fff; margin-bottom: 6px; }
+  .topic-card .topic-channels { font-size: 0.8rem; color: #7289da; margin-bottom: 8px; }
+  .topic-card .topic-desc { font-size: 0.9rem; color: #ccc; }
+
+  /* チャンネルサマリ */
+  .channels-section h2 { color: #aaa; font-size: 1.1rem; margin-bottom: 16px; border-bottom: 1px solid #333; padding-bottom: 8px; }
+  .channel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+  .channel-card { background: #16213e; border: 1px solid #2d2d4e; border-radius: 10px; padding: 16px; transition: border-color 0.2s; }
+  .channel-card:hover { border-color: #5865f2; }
+  .channel-card.active { border-left: 3px solid #57f287; }
+  .channel-card.inactive { opacity: 0.7; }
+  .channel-name { font-size: 1rem; font-weight: bold; color: #fff; margin-bottom: 4px; }
+  .channel-stats { font-size: 0.75rem; color: #7289da; margin-bottom: 10px; }
+  .channel-summary { font-size: 0.88rem; color: #ccc; }
+  .channel-summary ul { padding-left: 16px; }
+  .channel-summary li { margin-bottom: 4px; }
+
+  /* フッター */
+  footer { text-align: center; padding: 24px; color: #555; font-size: 0.8rem; margin-top: 32px; border-top: 1px solid #222; }
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>🤖 バランスAI Lab Discord サマリ</h1>
+    <p class="meta">生成日: 2026年04月11日 ／ 対象: バランスAI Lab（全37チャンネル）／ 直近7日間のアクティブチャンネル: 16件</p>
+  </div>
+</header>
+
+<div class="container">
+  <!-- 週次トピックセクション -->
+  <section class="weekly-section">
+    <h2>📅 直近1週間のトピック</h2>
+
+    <div class="topic-card">
+      <div class="topic-title">🤖 AI部会の正式立ち上げ</div>
+      <div class="topic-channels">📌 関連チャンネル: #💡アイディア, #🕊️メイン板, #いっかん（長坂）</div>
+      <div class="topic-desc">いっかんさん主導でバランス大家サロン向けの「AI部会」が正式発足。LINEオープンチャット（パスコード: 19900103）とFacebookグループを立ち上げ、BOC・BOS・BOB・BOK各板への周知投稿が行われた。「AIは知らなくてもOKだが、ChatGPT/Gemini/Claudeはまず試してほしい」というコンセプトで運営開始。</div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-title">🎙️ ラボレイディオ初回開催（4/11）</div>
+      <div class="topic-channels">📌 関連チャンネル: #022_ラボレイディオ, #🕊️メイン板</div>
+      <div class="topic-desc">バランスAIラボの新企画「ラボレイディオ」が4/11（本日）に初回配信予定。かばんもちおおきさんが箇条書き形式のオープニング台本を作成し、BGM・進行順序も整備。いっかんさんが担当するバトン以降のパートはほぼアドリブ予定で、収録を楽しむ雰囲気で進行予定。</div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-title">📅 Googleカレンダー×Discord自動告知Bot開発</div>
+      <div class="topic-channels">📌 関連チャンネル: #021_サロンイベントとgoogleスケジュールの連携</div>
+      <div class="topic-desc">バランス大家秘書（なべさん）がGoogleカレンダーの予定登録を完了し、リッツさんがDiscordのWebhook権限を取得して自動告知Botの開発に着手。BOS・BOB・BOC向けに月3回（月初・中旬・下旬）のスケジュール自動投稿を目指す。カレンダーの整形出力テストも成功し、実用化が近い状態。</div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-title">🏦 金融機関提案ツールの公開方針決定</div>
+      <div class="topic-channels">📌 関連チャンネル: #003_属性と物件情報投げれば最適金融機関提案</div>
+      <div class="topic-desc">属性・物件情報から最適な金融機関を提案するツールについて、「10点でもまず公開」方針でサロン内公開を決定。退会者への対応（認証なし問題）は今後の会員管理機能とMCP認証導入で対応する方向。ラボレイディオでの紹介も検討中。</div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-title">📋 Notion整備とプロジェクト管理基盤の確立</div>
+      <div class="topic-channels">📌 関連チャンネル: #007_notionでサロンコンテンツ整理, #010_個別面談データベース</div>
+      <div class="topic-desc">AIラボメンバー向けコンテンツをNotionへ移植完了（プロジェクト一覧・Discordとの連番同期）。Hiroshiさんがデータベース関連プロジェクトのメモを記入し、担当者別のネクストアクション補記も可能な運用に。個別面談データベースもNotionで公開方針に。</div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-title">🤫 AI秘書のAI部会向け公開検討</div>
+      <div class="topic-channels">📌 関連チャンネル: #017_ai秘書</div>
+      <div class="topic-desc">かばんもちおおきさん開発のAI秘書について、非エンジニア向けセットアップ手順書つきでAI部会板への共有を検討中。Claude Code（ターミナル版）が必要な点の明記と、GitHubでのバージョン・フォーク管理の整備も提案された。</div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-title">🔓 不動産ポータル大規模情報漏洩</div>
+      <div class="topic-channels">📌 関連チャンネル: #☕雑談</div>
+      <div class="topic-desc">SUUMO・アットホーム・HOMESなどの不動産ポータルで大規模な情報漏洩が発生した模様（各社からの公式発表は未確認）。リッツさんがX（旧Twitter）情報をシェア。サロン内でも注視が必要な状況。</div>
+    </div>
+
+  </section>
+
+  <!-- チャンネル別サマリ -->
+  <section class="channels-section">
+    <h2>📋 チャンネル別サマリ</h2>
+    <div class="channel-grid">
+
+      <!-- アクティブチャンネル -->
+      <div class="channel-card active">
+        <div class="channel-name">#🗣️一般</div>
+        <div class="channel-stats">直近7日: 10件のメッセージ</div>
+        <div class="channel-summary">
+          <ul>
+            <li>新メンバーのハルキさんがDiscordの使い方（投稿場所・チャンネル選択）を確認</li>
+            <li>Googleカレンダー連携（プロジェクト021）の進捗・公開時期についての質問</li>
+            <li>「10点から始めて徐々に完成」のバランスイズムが再確認された</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="channel-card active">
+        <div class="channel-name">#🙋自己紹介</div>
+        <div class="channel-stats">直近7日: 4件のメッセージ</div>
+        <div class="channel-summary">
+          <ul>
+            <li>新メンバー「あかねさん（aka/nise）」が入会—金融系社内SE・AI/ロボット導入経験、育休中</li>
+            <li>転貸民泊7件の実績を持つ民泊強者として歓迎ムード</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="channel-card active">
+        <div class="channel-name">#🕊️メイン板</div>
+        <div class="channel-stats">直近7日: 17件のメッセージ</div>
+        <div class="channel-summary">
+          <ul>
+            <li>いっかんさんが週次Discordサマリを公開（Claude Codeスキルで完全自動化）</li>
+            <li>ハルキさんのYouTube最新動画がBOD教材として高評価—プロ監修体制に移行</li>
+            <li>掛け合いコンテンツはセカンドチャンネルへ移行、メインはプロ監修動画に</li>
+            <li>Googleカレンダー連携・AI秘書などのツール活用状況を共有・議論</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="channel-card active">
+        <div class="channel-name">#💡アイディア</div>
+        <div class="channel-stats">直近7日: 50件のメッセージ</div>
+        <div class="channel-summary">
+          <ul>
+            <li>AI部会の立ち上げ宣言・LINEオプチャ作成・各板への周知投稿が完了</li>
+            <li>情報公開の方針議論：「情報の民主化優先、ただしクロノ等の激アツアイデアはローンチまで秘匿」に決定</li>
+            <li>「伽藍とバザール」のオープンソース思想を引用し、理念共感者を集める戦略が共有</li>
+            <li>顧客DBの退会時チェックリスト追加の必要性が指摘された</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="channel-card active">
+        <div class="channel-name">#003_属性と物件情報投げれば最適金融機関提案</div>
+        <div class="channel-stats">直近7日: 10件のメッセージ</div>
+        <div class="channel-summary">
+          <ul>
+            <li>ツールをサロン限定で早期公開する方針に決定（早く提供することが価値）</li>
+            <li>退会者・外部流出の懸念はあるが、まず公開優先→将来的にMCP認証で対応</li>
+            <li>ラボレイディオでの紹介・デモを検討中</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="channel-card active">
+        <div class="channel-name">#005_自動物あげシステム</div>
+        <div class="channel-stats">直近7日: 4件のメッセージ</div>
+        <div class="channel-summary">
+          <ul>
+            <li>ブツ上げくんをハルキさんに使ってもらうため、締め切りを4/15に設定</li>
+            <li>千葉県野田市の収益物件情報（築7年、利回り良好）がGmailで届き試験的に問い合わせ</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="channel-card active">
+        <div class="channel-name">#007_notionでサロンコンテンツ整理</div>
+        <div class="channel-stats">直近7日: 11件のメッセージ</div>
+        <div class="channel-summary">
+          <ul>
+            <li>AIラボメンバー向けコンテンツをNotionへ移植完了、プロジェクト連番をDiscordと同期</li>
+            <li>権限設定を整備（すけさん→読み取り→編集権限に変更）</li>
+            <li>Hiroshiさんがデータベース系プロジェクトを記入、担当者ネクストアクション機能も整備</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="channel-card active">
+        <div class="channel-name">#010_個別面談データベース</div>
+        <div class="channel-stats">直近7日: 3件のメッセージ</div>
+        <div class="channel-summary">
+          <ul>
+            <li>リッツさんがNotionに個別面談DBを公開（一旦公開方針）</li>
+            <li>AI部会板での説明投稿を依頼中</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="channel-card active">
+        <div class="channel-name">#016_バランスサロンのイベントカレンダ自動化</div>
+        <div class="channel-stats">直近7日: 1件のメッセージ</div>
+        <div class="channel-summary">
+          #021と内容が重複するため活動停止。以後は#021に集約。
+        </div>
+      </div>
+
+      <div class="channel-card active">
+        <div class="channel-name">#017_ai秘書</div>
+        <div class="channel-stats">直近7日: 5件のメッセージ</div>
+        <div class="channel-summary">
+          <ul>
+            <li>かばんもちおおきさん開発のAI秘書をAI部会板で共有予定（非エンジニア向け手順書付き）</li>
+            <li>Claude Code（ターミナル版）が必要な点の明記を提案</li>
+            <li>GitHubでのバージョン管理・フォーク管理の整備も議論中</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="channel-card active">
+        <div class="channel-name">#021_サロンイベントとgoogleスケジュールの連携</div>
+        <div class="channel-stats">直近7日: 50件のメッセージ</div>
+        <div class="channel-summary">
+          <ul>
+            <li>Googleカレンダーの予定登録（3〜5月分）が完了</li>
+            <li>リッツさんがWebhook権限を取得し、スケジュール自動出力の初期テスト成功</li>
+            <li>BOS/BOB/BOC/BOKへの月3回自動投稿Bot開発中（月初・中旬・下旬）</li>
+            <li>バランス大家サロン📅Botによるイベント一覧フォーマット出力を確認</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="channel-card active">
+        <div class="channel-name">#022_ラボレイディオ</div>
+        <div class="channel-stats">直近7日: 11件のメッセージ</div>
+        <div class="channel-summary">
+          <ul>
+            <li>4/11初回開催に向けてオープニング台本・BGM設定が完了</li>
+            <li>いっかんさんのパートはほぼアドリブ予定でメンバーが笑いながら準備</li>
+            <li>明日のランチで進め方を相談しながら「ゆるく行く」方針</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="channel-card active">
+        <div class="channel-name">#いっかん（長坂）</div>
+        <div class="channel-stats">直近7日: 9件のメッセージ</div>
+        <div class="channel-summary">
+          <ul>
+            <li>貸金業法20年ぶり改正の動向を共有—アパロン系への影響を懸念</li>
+            <li>トランプ政権の株市場動向をウォッチ（停戦合意の可能性も）</li>
+            <li>Facebookグループ管理を始めて、なべさんの運用力の偉大さを再認識</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="channel-card active">
+        <div class="channel-name">#リッツ</div>
+        <div class="channel-stats">直近7日: 7件のメッセージ</div>
+        <div class="channel-summary">
+          <ul>
+            <li>中島聡さんに「AI時代のソフトウェアエンジニアの生き残り方」を相談した動画を公開</li>
+            <li>4/24（金）「AIエージェント×不動産セミナー」を告知（Claude Codeを使いこなす内容）</li>
+            <li>MJサロン2期生の募集開始を確認</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="channel-card active">
+        <div class="channel-name">#☕雑談</div>
+        <div class="channel-stats">直近7日: 12件のメッセージ</div>
+        <div class="channel-summary">
+          <ul>
+            <li>不動産ポータル（SUUMO・アットホーム・HOMES）の大規模情報漏洩が発覚</li>
+            <li>スルガ銀行の「金融資産5000万円以上限定プラン（金利1.6%・自己資金1割）」情報を共有</li>
+            <li>オリックス銀行は「偉い人コネクション」で個人枠フル消化後も法人で借りられる可能性あり</li>
+            <li>リッツさんの誕生日をお祝い（アラフォー到達🎂）</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="channel-card active">
+        <div class="channel-name">#🍺オフ会出欠確認</div>
+        <div class="channel-stats">直近7日: 3件のメッセージ</div>
+        <div class="channel-summary">
+          <ul>
+            <li>4/11（本日）ランチと4/26ランチの出欠確認を実施中</li>
+            <li>かおりんさんは4/26参加困難（バランスさん所有アパートの法人登記契約と重複）</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 非アクティブチャンネル -->
+      <div class="channel-card inactive">
+        <div class="channel-name">#📏ガイドライン</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">サロンの利用規則・行動指針を掲示するチャンネル</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#📣アナウンス</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">サロン運営からの公式アナウンスを投稿するチャンネル</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#🤖ai技術情報</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">AI最新技術・ツールの情報共有チャンネル</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#001_aiバランス大家</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">バランス大家AIラボの基幹プロジェクト議論チャンネル</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#002_テレフォ〜ンショッピング自動化</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">電話営業・問い合わせ自動化プロジェクトのチャンネル</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#004_信金ふと客自動検索</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">信用金庫の太客（優良顧客）を自動検索するプロジェクト</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#006_金融機関へ提出するアピール文書作成自動化</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">融資審査向けのアピール文書を自動作成するプロジェクト</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#008_物件情報スコアリング自動化</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">物件情報を自動でスコアリング・評価するプロジェクト</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#009_仕掛案件工程管理表WBS</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">進行中案件のWBS・工程管理を行うプロジェクト</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#011_バランス大家サロンホームページ作成</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">バランス大家サロンの公式HPを制作するプロジェクト</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#012_顧客DB</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">サロン会員・顧客データベースの構築・管理プロジェクト</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#013_買い付け作成自動発射システム</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">買い付け申込書を自動作成・送信するシステムのプロジェクト</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#014_収益計算シミュレーション</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">物件の収益性をシミュレーションするツールのプロジェクト</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#015_客付けFAX営業を簡単にできる仕組み</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">仲介業者へのFAX営業を効率化・自動化するプロジェクト</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#018_サロンポイントプロジェクト</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">サロン内ポイント制度の設計・実装プロジェクト</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#019_chrono24</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">Chrono24（時計売買プラットフォーム）活用プロジェクト</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#020_nシステムのツール化</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">nシステムをツール化・汎用化するプロジェクト</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#投稿テスト用</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">Bot・webhook等の投稿テスト専用チャンネル</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#ブツレーダー</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">物件情報の収集・レーダーシステム関連チャンネル</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#すけ</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">すけさん個人チャンネル（個別サポート・相談用）</div>
+      </div>
+
+      <div class="channel-card inactive">
+        <div class="channel-name">#大西</div>
+        <div class="channel-stats">直近7日: 0件</div>
+        <div class="channel-summary">大西さん個人チャンネル（個別サポート・相談用）</div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<footer>
+  <p>Generated by Discord Summary Skill | バランスAI Lab | 2026-04-11</p>
+</footer>
+</body>
+</html>
