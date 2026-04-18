@@ -229,11 +229,59 @@
   .full-text.open { display: block; }
   .card-summary.hidden { display: none; }
 
+  .tag-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .tag-btn {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+
+  .tag-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .tag-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .card-tag {
+    background: #eef2ff;
+    color: var(--primary);
+    border-radius: 10px;
+    padding: 2px 9px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
   .stats-bar {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 28px;
+    margin-bottom: 16px;
     flex-wrap: wrap;
   }
 
@@ -281,6 +329,7 @@
 </div>
 
 <div class="container">
+  <div class="tag-bar" id="tagBar"></div>
   <div class="stats-bar">
     <span id="resultCount">33本の動画</span>
   </div>
@@ -295,164 +344,164 @@
 
 <script>
 const videos = [
-  {no:1,title:"売却の流れ教えて！【教えてバランス先生！】",url:"https://www.youtube.com/watch?v=vsyHdQeg_So",summary:`不動産売却の全体的な流れと初心者が特に注意すべきポイントを5つのステップで解説。
+  {no:1, tags:["売却・出口","契約"], title:"売却の流れ教えて！【教えてバランス先生！】",url:"https://www.youtube.com/watch?v=vsyHdQeg_So",summary:`不動産売却の全体的な流れと初心者が特に注意すべきポイントを5つのステップで解説。
 
 1. 売却の準備と仲介会社の選定 — 信頼できる業者選び・査定額の罠・高値売却のコツ。
 2. 媒介契約の種類 — 一般媒介と専任・専属専任の違い、囲い込みリスク。
 3. 残債と抵当権の確認 — 「売却額＞残債」が大前提。事前に銀行へ確認を。
 4. 売買契約と交渉 — 買付・手付金・融資特約・契約不適合責任の扱い方。
 5. 決済・引渡し時の注意 — 権利証・実印の準備、境界確認、管理会社の引き継ぎ。`},
-  {no:2,title:"なんで1ルーム区分買っちゃいけないの？【教えてバランス先生】",url:"https://www.youtube.com/watch?v=esJ94Ue8Pdw",summary:`規模拡大を目指す人にとってワンルーム区分マンション投資が危険な理由を解説。
+  {no:2, tags:["区分マンション","融資・銀行","物件選び"], title:"なんで1ルーム区分買っちゃいけないの？【教えてバランス先生】",url:"https://www.youtube.com/watch?v=esJ94Ue8Pdw",summary:`規模拡大を目指す人にとってワンルーム区分マンション投資が危険な理由を解説。
 
 ① 銀行の担保評価がほぼゼロ — 土地持ち分が少なく、次の融資が受けられなくなる。
 ② 「赤字経営者」とみなされる — 毎月持ち出しがあると銀行の追加融資が止まる。
 
 節税目的なら否定しないが、規模拡大を目指すなら、既に持っている場合も100〜200万の損切り売却を検討すべき。`},
-  {no:3,title:"媒介契約ってな〜に？【教えてバランス先生】",url:"https://www.youtube.com/watch?v=G2xFP1vqbsg",summary:`不動産売却時に結ぶ媒介契約の3種類を解説。
+  {no:3, tags:["売却・出口","契約"], title:"媒介契約ってな〜に？【教えてバランス先生】",url:"https://www.youtube.com/watch?v=G2xFP1vqbsg",summary:`不動産売却時に結ぶ媒介契約の3種類を解説。
 
 ・一般媒介 — 複数業者に依頼可。市場露出が増え高値売却を狙いやすい。
 ・専任媒介 — 1社のみ。自己発見取引は可。
 ・専属専任媒介 — 1社のみ。自己発見取引も必ず業者経由が必要。
 
 買い手側は販売図面の「取引態様」を確認し、一般媒介の場合は他社成約リスクに注意が必要。`},
-  {no:4,title:"教えてバランス先生！賃料はどうやって決めたらいいの？【技術編】",url:"https://www.youtube.com/watch?v=0xroSgGTI6o",summary:`適正な家賃設定と相場の調べ方を実践的に解説。
+  {no:4, tags:["家賃設定・客付け"], title:"教えてバランス先生！賃料はどうやって決めたらいいの？【技術編】",url:"https://www.youtube.com/watch?v=0xroSgGTI6o",summary:`適正な家賃設定と相場の調べ方を実践的に解説。
 
 ・大手仲介・地場業者・中堅業者の3社以上にヒアリングするのが鉄則。
 ・戸建ては「近隣の3DK・2DKアパート家賃＋1〜2万円」を参考にする。
 ・生活保護スキームや直前集中入居など、不自然な高利回り物件のレントロールには要注意。`},
-  {no:5,title:"【教えてバランス先生！！】鳩マークとウサギマークの違いってな〜に？？？",url:"https://www.youtube.com/watch?v=9p1hxv4ElAM",summary:`不動産業界の2大団体「全宅連（ハトマーク）」と「全日（ウサギマーク）」の違いを解説。
+  {no:5, tags:["法人・税務"], title:"【教えてバランス先生！！】鳩マークとウサギマークの違いってな〜に？？？",url:"https://www.youtube.com/watch?v=9p1hxv4ElAM",summary:`不動産業界の2大団体「全宅連（ハトマーク）」と「全日（ウサギマーク）」の違いを解説。
 
 バランス先生はハトマークを推奨。理由は業者の集まりが多く人脈を作りやすく、物上げや融資開拓で有利なため。
 
 一般利用者にとっては取引内容や安全性に違いはない。`},
-  {no:6,title:"奥様（ご主人）ブロックの外し方！【教えてバランス先生】",url:"https://www.youtube.com/watch?v=DUYrjA9YEjM",summary:`不動産投資でパートナーから反対される「奥様ブロック」の原因と解消法。
+  {no:6, tags:["マインドセット"], title:"奥様（ご主人）ブロックの外し方！【教えてバランス先生】",url:"https://www.youtube.com/watch?v=DUYrjA9YEjM",summary:`不動産投資でパートナーから反対される「奥様ブロック」の原因と解消法。
 
 根本原因は情報格差。バランス流解消法3選：
 ① 可能な限り一緒に勉強する（セミナー同行など）。
 ② 学んだ内容を毎回要約して伝え続ける。
 ③ 利益を家族旅行・外食などに還元する（最重要）。`},
-  {no:7,title:"やってはいけない？戸建利回20％の作り方！資産が増えない方法",url:"https://www.youtube.com/watch?v=_30hPGELjZ8",summary:`ボロ戸建て投資で高利回りを出す手法のBSの観点での限界を解説。
+  {no:7, tags:["戸建投資","規模拡大戦略"], title:"やってはいけない？戸建利回20％の作り方！資産が増えない方法",url:"https://www.youtube.com/watch?v=_30hPGELjZ8",summary:`ボロ戸建て投資で高利回りを出す手法のBSの観点での限界を解説。
 
 100万円で物件を買っても純資産は変わらず、現金が固定資産に置き換わるだけ。銀行融資がつきにくいためレバレッジも使えない。
 
 ・向いている人：まず手元CFを増やしたい初心者。
 ・向いていない人：急速に資産規模を拡大したい人。`},
-  {no:8,title:"教えてバランスさん！融資がつかない物件に融資を付けると融資が止まるって本当？",url:"https://www.youtube.com/watch?v=JY9eLFtVW7w",summary:`違法物件・再建築不可など遵法性のない物件に無理に融資を受けると、その後の銀行融資が止まる理由を解説。
+  {no:8, tags:["融資・銀行","物件選び"], title:"教えてバランスさん！融資がつかない物件に融資を付けると融資が止まるって本当？",url:"https://www.youtube.com/watch?v=JY9eLFtVW7w",summary:`違法物件・再建築不可など遵法性のない物件に無理に融資を受けると、その後の銀行融資が止まる理由を解説。
 
 銀行は違法物件の担保価値を「0円」とみなすため「1,000万円の債務超過」と判断される。耐用年数超えやエレベーターなし5階などでも同様のリスクあり。
 
 十分な余信（資産背景）がある状態でないと購入は慎重に。`},
-  {no:9,title:"TTP（徹底的にパクる）で売上を上げるコツ【技術編】",url:"https://www.youtube.com/watch?v=xo5RbF4cuDo",summary:`成功者のマインドを徹底的にコピーする「TTP」の真髄と失敗パターンを解説。
+  {no:9, tags:["マインドセット"], title:"TTP（徹底的にパクる）で売上を上げるコツ【技術編】",url:"https://www.youtube.com/watch?v=xo5RbF4cuDo",summary:`成功者のマインドを徹底的にコピーする「TTP」の真髄と失敗パターンを解説。
 
 失敗の共通点は「いいとこ取り」をしようとすること。成功のコツは「脳死」で即実行・小さなことから真似し続けること。
 
 実践例：師匠の「売却が最高収益」という教えを即TTPし、手取収益を1億→1.8億に加速。`},
-  {no:10,title:"教えてバランスさん！高い家賃で貸すにはどうすればいいの？？",url:"https://www.youtube.com/watch?v=BLbKqtxfPFQ",summary:`利回り20%戸建てを実現するための「高く貸す」テクニックを解説。
+  {no:10, tags:["家賃設定・客付け"], title:"教えてバランスさん！高い家賃で貸すにはどうすればいいの？？",url:"https://www.youtube.com/watch?v=BLbKqtxfPFQ",summary:`利回り20%戸建てを実現するための「高く貸す」テクニックを解説。
 
 ・まずは高めの家賃で出して市場の反響を見る。
 ・ペット多頭飼いOK（敷金上積みなし）で強力に差別化。
 ・初期費用ゼロ＋家賃1.2〜1.5倍のゼロゼロ物件戦略。
 ・値下げは最後の手段。まずはフリーレント・家具家電付きを試す。
 ・業者が渋る場合はジモティーへ自分で掲載。`},
-  {no:11,title:"50平米以下の戸建家賃設定【技術編】",url:"https://www.youtube.com/watch?v=-f_Y2xL7vMk",summary:`相場が分かりにくい小規模戸建ての家賃設定テクニックを解説。
+  {no:11, tags:["戸建投資","家賃設定・客付け"], title:"50平米以下の戸建家賃設定【技術編】",url:"https://www.youtube.com/watch?v=-f_Y2xL7vMk",summary:`相場が分かりにくい小規模戸建ての家賃設定テクニックを解説。
 
 ・現地に行き近隣の同規模アパートの募集家賃を調べる。
 ・比較対象は「45〜50平米の古いアパート2DK・3DK」。
 ・戸建てはペット可にして差別化し、相場より強気な価格設定が有効。
 ・実例：相場9.5万→12.5万円で入居者が決まったケースも。`},
-  {no:12,title:"年収３００万の規模拡大戦略【技術編】【毎朝投稿】",url:"https://www.youtube.com/watch?v=c2Cn3kyJ9hs",summary:`年収300万円・属性低め・自己資金少なめから規模を拡大する具体的ロードマップ。
+  {no:12, tags:["規模拡大戦略","法人・税務","融資・銀行"], title:"年収３００万の規模拡大戦略【技術編】【毎朝投稿】",url:"https://www.youtube.com/watch?v=c2Cn3kyJ9hs",summary:`年収300万円・属性低め・自己資金少なめから規模を拡大する具体的ロードマップ。
 
 ① 今すぐ法人を設立（実家登記OK）。
 ② 20〜30万円のボロ戸建てをDIYリフォームして家賃収入を作り、決算書を育てる。
 ③ 3〜5年で4〜5件の実績を作り公庫・信金への交渉材料に。
 ④ 5〜6年目でボロ戸建てを売却して500万円のキャッシュを作り、3,000万円前後のアパートへ移行。`},
-  {no:13,title:"教えてバランスさん！多法人スキームって何？【技術編】",url:"https://www.youtube.com/watch?v=IzlPI8RoVoU",summary:`不動産投資における「多法人スキーム」の仕組み・目的・リスクを解説。
+  {no:13, tags:["法人・税務","融資・銀行"], title:"教えてバランスさん！多法人スキームって何？【技術編】",url:"https://www.youtube.com/watch?v=IzlPI8RoVoU",summary:`不動産投資における「多法人スキーム」の仕組み・目的・リスクを解説。
 
 銀行ごとに別法人を設立して融資を受け、短期間で規模拡大を図る手法。現在は銀行チェックが厳しく「封じられた」との声も多い。
 
 合理的な多法人利用として：法人税の800万超え対策・法人ごとのM&A（売却）による出口戦略も。
 
 ※虚偽申告に近いリスクがあるため要注意。`},
-  {no:14,title:"保証協会融資とプロパー融資何が違うの？",url:"https://www.youtube.com/watch?v=kLlifdgcDX8",summary:`不動産投資・中小企業経営で重要な2つの融資形態の違いを解説。
+  {no:14, tags:["融資・銀行"], title:"保証協会融資とプロパー融資何が違うの？",url:"https://www.youtube.com/watch?v=kLlifdgcDX8",summary:`不動産投資・中小企業経営で重要な2つの融資形態の違いを解説。
 
 ・プロパー融資：銀行独自判断。審査が厳しいが柔軟な条件で大きな融資を引ける。
 ・保証協会付き融資：公的保証人あり。金利が低めで初心者も使いやすい。
 
 戦略：まず保証協会付きで実績を積み、債務者区分を上げてプロパー融資を目指すのが理想。`},
-  {no:15,title:"銀行アポどりのコツ○○曜日をねらえ！",url:"https://www.youtube.com/watch?v=5mIxgvkQ9vE",summary:`銀行担当者とスムーズにアポを取るための具体的コツを解説。
+  {no:15, tags:["融資・銀行"], title:"銀行アポどりのコツ○○曜日をねらえ！",url:"https://www.youtube.com/watch?v=5mIxgvkQ9vE",summary:`銀行担当者とスムーズにアポを取るための具体的コツを解説。
 
 ・水曜日を狙う：不動産会社の定休日が多く、銀行担当者に時間的余裕が生まれやすい。
 ・要件を明確に伝える：「〇〇の融資の件で」と具体的に話すことで優先対応してもらえる。
 ・2年間で60社の取引を紹介することで担当者の昇格に貢献し、強い信頼関係を構築した実例も紹介。`},
-  {no:16,title:"教えてバランスさん！法人所在地はどこが良いの？",url:"https://www.youtube.com/watch?v=lU-L9dBDCVU",summary:`不動産投資向け法人を設立・移転する際の所在地選定の判断基準を解説。
+  {no:16, tags:["法人・税務","融資・銀行"], title:"教えてバランスさん！法人所在地はどこが良いの？",url:"https://www.youtube.com/watch?v=lU-L9dBDCVU",summary:`不動産投資向け法人を設立・移転する際の所在地選定の判断基準を解説。
 
 最大の基準は「融資を受けたい金融機関の営業エリア」。信金は原則その地域の法人にしか融資しない。
 
 ・NGな形態：レンタル・バーチャル・シェアオフィス（多くの信金がNG）。
 ・支店登記の活用で本店を移さずに対応できる場合も（湘南信金・神奈川信金など）。`},
-  {no:17,title:"戸建投資で規模拡大する為に必要なたった一つのコト【技術編】前編",url:"https://www.youtube.com/watch?v=26OtRR4bzcM",summary:`戸建投資で規模をスピーディーに拡大するための核心戦略。
+  {no:17, tags:["戸建投資","融資・銀行","規模拡大戦略"], title:"戸建投資で規模拡大する為に必要なたった一つのコト【技術編】前編",url:"https://www.youtube.com/watch?v=26OtRR4bzcM",summary:`戸建投資で規模をスピーディーに拡大するための核心戦略。
 
 「市場価格より銀行の担保評価が高い物件をフルローンで購入する」こと。
 
 例：市場500万円の物件に1,000万円の担保評価が出れば、銀行目線では資産超過になる。フルローンで現金を温存し、次の投資資金に回せる。こうした物件を1年で22個購入し2億円の資産を構築した実例を紹介。`},
-  {no:18,title:"抵当権と根抵当権の違い教えて！【教えてバランス先生！】",url:"https://www.youtube.com/watch?v=zrvmGdFRCtE",summary:`銀行が根抵当権を勧める実務的な理由と注意点を解説。
+  {no:18, tags:["融資・銀行","契約"], title:"抵当権と根抵当権の違い教えて！【教えてバランス先生！】",url:"https://www.youtube.com/watch?v=zrvmGdFRCtE",summary:`銀行が根抵当権を勧める実務的な理由と注意点を解説。
 
 ・抵当権：借入金額と同額を設定。ローン完済で原則抹消できる。
 ・根抵当権：借入金額の約1.2倍（極度額）で設定。複数借入を包括担保。完済してもすぐ解除されない場合がある。
 
 根抵当権は設定額が高い分、登録免許税が少し高くなる。投資家は融資を受けて買えることを優先し、銀行の意向に合わせて根抵当権を受け入れることもある。`},
-  {no:19,title:"24歳年収300万、家賃売上1,000万になる為に何をすれば良い？【技術編】",url:"https://www.youtube.com/watch?v=OxDhPw5xLi0",summary:`24歳・年収300万円から30歳までに家賃売上1,000万円を目指すロードマップ。
+  {no:19, tags:["規模拡大戦略","法人・税務","融資・銀行"], title:"24歳年収300万、家賃売上1,000万になる為に何をすれば良い？【技術編】",url:"https://www.youtube.com/watch?v=OxDhPw5xLi0",summary:`24歳・年収300万円から30歳までに家賃売上1,000万円を目指すロードマップ。
 
 ① 実家暮らしで年間200万円の種銭を貯める。
 ② 25歳：法人設立（約30万円）＋100万円のボロ戸建てを現金購入。
 ③ 26歳：戸建て3棟の実績と380万円の自己資金を武器に公庫・信金で融資を受ける。
 ④ 2,000〜3,000万円のアパートで家賃売上1,000万円の大台へ。`},
-  {no:20,title:"子供には節約させるべき？贅沢させるべき？バランス流子育術",url:"https://www.youtube.com/watch?v=iMvXRcS9kqw",summary:`不動産投資家バランス大家氏の「子供に贅沢をさせる教育方針」とその理由。
+  {no:20, tags:["マインドセット"], title:"子供には節約させるべき？贅沢させるべき？バランス流子育術",url:"https://www.youtube.com/watch?v=iMvXRcS9kqw",summary:`不動産投資家バランス大家氏の「子供に贅沢をさせる教育方針」とその理由。
 
 経験したことがないものは目標にしづらい。両極（高級ホテル⇔素朴な宿）を体験させ、振り幅を実体験で学ばせることが重要。正しい欲を持たせることでポジティブな意欲を引き出す。
 
 ただし「ボンクラ」にならないよう、経営的な考え方も並行して教えることが大切。`},
-  {no:21,title:"2025年5月決算書セミナー　資産家になる為の考え方",url:"https://www.youtube.com/watch?v=Vq-8dRYUA24",summary:`チャンネル登録者数1万人記念「決算書勉強会」ライブ配信アーカイブ。
+  {no:21, tags:["法人・税務","融資・銀行","規模拡大戦略"], title:"2025年5月決算書セミナー　資産家になる為の考え方",url:"https://www.youtube.com/watch?v=Vq-8dRYUA24",summary:`チャンネル登録者数1万人記念「決算書勉強会」ライブ配信アーカイブ。
 
 ・固定資産約11億円・借入金約10億円のリアルな決算書を公開。
 ・3法人合計：固定資産約11.4億円、借入金約13億円、純資産約1,500万円。
 ・核心：「決算書をデザインする」こと。次の融資を引き出し続けられる健康的な決算書を意図的に作ることが資産家への道。`},
-  {no:22,title:"セミナー質疑応答（奥さんブロック、評価証明意味あるか、物件に執着しないためには）",url:"https://www.youtube.com/watch?v=D22oPcP2UOc",summary:`セミナーの質疑応答を収録。融資・客付け・家族の協力・マインドセットなど実践的な内容。
+  {no:22, tags:["融資・銀行","家賃設定・客付け","マインドセット"], title:"セミナー質疑応答（奥さんブロック、評価証明意味あるか、物件に執着しないためには）",url:"https://www.youtube.com/watch?v=D22oPcP2UOc",summary:`セミナーの質疑応答を収録。融資・客付け・家族の協力・マインドセットなど実践的な内容。
 
 ・売却は資産入れ替えなら銀行に嫌われない。「銀行は星の数ほどある」のマインドが重要。
 ・オーバーローンは主にリフォーム費用を含めて実現。
 ・ホームステージング：6〜7万円で実施可能。家賃値下げは最後の手段。
 ・物件に執着しない：次の物件に常に意識を向けることが規模拡大の秘訣。`},
-  {no:23,title:"横⚪︎銀行からの【ペナルティ】皆んな知っておきましょう！",url:"https://www.youtube.com/watch?v=PkNfR1VKf8U",summary:`固定金利期間中の売却で発生する「違約金」の実体験から注意喚起。
+  {no:23, tags:["融資・銀行","売却・出口","契約"], title:"横⚪︎銀行からの【ペナルティ】皆んな知っておきましょう！",url:"https://www.youtube.com/watch?v=PkNfR1VKf8U",summary:`固定金利期間中の売却で発生する「違約金」の実体験から注意喚起。
 
 借入残高約4,200万円・残り約半年で約40万円のペナルティが発生。借入額が3〜4億円なら数百万円になるリスクも。
 
 ・変動金利は法人条件で3%前後になる場合があり一概に有利とは言えない。
 ・出口戦略（売却予定）がある場合は固定期間の設定を銀行と慎重に相談すること。`},
-  {no:24,title:"お医者さんと年収700万以上の人がやってはいけない区分投資【毎朝投稿】",url:"https://www.youtube.com/watch?v=LVFZdjmq-l8",summary:`高年収層がターゲットにされやすい新築・中古ワンルーム投資の危険性を解説。
+  {no:24, tags:["区分マンション","融資・銀行","物件選び"], title:"お医者さんと年収700万以上の人がやってはいけない区分投資【毎朝投稿】",url:"https://www.youtube.com/watch?v=LVFZdjmq-l8",summary:`高年収層がターゲットにされやすい新築・中古ワンルーム投資の危険性を解説。
 
 ① 与信の浪費：融資枠を使い切り次の物件が買えなくなる。
 ② 資産価値の下落がローン残債の減少より早い。
 ③ 「毎月1万の手出し」は30年間ずっと赤字であること。
 
 既に持っている場合は親に借金してでも損切り売却し与信を回復させることを推奨。`},
-  {no:25,title:"お勧めする区分投資3選！",url:"https://www.youtube.com/watch?v=H5K2sBO3508",summary:`初心者でも再現性が高い「やっていい区分投資」3パターン。
+  {no:25, tags:["区分マンション","物件選び"], title:"お勧めする区分投資3選！",url:"https://www.youtube.com/watch?v=H5K2sBO3508",summary:`初心者でも再現性が高い「やっていい区分投資」3パターン。
 
 1. プレビルド（新築マンション）：建築前購入→完成後転売。利益が大きく出口が明確。
 2. オーナーチェンジ・ファミリー区分：相場より安く購入し実需で売却。定期借家契約推奨。
 3. 団地投資（特におすすめ）：昭和40〜50年代公社・公団の4〜5階。利回り20%も狙える。住宅ローン適用可の場合もあり。`},
-  {no:26,title:"法人っていつ作れば良いの？今なの？ナウなの？【教えてバランスさん】",url:"https://www.youtube.com/watch?v=3eivVHf_vik",summary:`「何件持ったら法人化」という誤解を解消。不動産投資の法人化は今すぐが正解。
+  {no:26, tags:["法人・税務","融資・銀行"], title:"法人っていつ作れば良いの？今なの？ナウなの？【教えてバランスさん】",url:"https://www.youtube.com/watch?v=3eivVHf_vik",summary:`「何件持ったら法人化」という誤解を解消。不動産投資の法人化は今すぐが正解。
 
 ・銀行は「個人の資産形成」より「法人の事業」に融資しやすい。
 ・信用金庫は地域の中小企業を支援するため法人の方が融資対象になりやすい。
 ・早く作って1期目の決算を終えることが重要。
 ・2期目以降の赤字は融資が止まるため必ず黒字化が必須。`},
-  {no:27,title:"【反⚪︎チェック？】合同会社だと新規取引難しくなった？【教えてバランスさん】",url:"https://www.youtube.com/watch?v=PIHQk1nnSZY",summary:`合同会社より株式会社が推奨される理由：銀行口座開設の厳格化とコンプライアンスの観点から解説。
+  {no:27, tags:["法人・税務"], title:"【反⚪︎チェック？】合同会社だと新規取引難しくなった？【教えてバランスさん】",url:"https://www.youtube.com/watch?v=PIHQk1nnSZY",summary:`合同会社より株式会社が推奨される理由：銀行口座開設の厳格化とコンプライアンスの観点から解説。
 
 株式会社は設立時に「定款認証」で公的な反社チェックをパスしており、銀行からの信頼が得られやすい。合同会社は定款認証がないため、資本金100万未満＋マンション登記では口座開設が拒否されるケースも。
 
 また合同会社は代表者死亡で解散リスクがある点も注意。`},
-  {no:28,title:"管理会社が家賃滞納？どうすれば良い？【教えてバランスさん】",url:"https://www.youtube.com/watch?v=KKeqvRwPT8k",summary:`管理会社からの送金遅延という見落としがちなリスクと対策を解説。
+  {no:28, tags:["賃貸管理"], title:"管理会社が家賃滞納？どうすれば良い？【教えてバランスさん】",url:"https://www.youtube.com/watch?v=KKeqvRwPT8k",summary:`管理会社からの送金遅延という見落としがちなリスクと対策を解説。
 
 送金が1〜2日遅れ始めたら倒産寸前のサインの可能性。「経理ミス」「銀行データ不具合」は要注意ワード。
 
@@ -460,34 +509,34 @@ const videos = [
 ① 管理委託契約書の解約条件を確認。
 ② 周囲の業者に支払い遅延がないか聞き込み。
 ③ 遅延2回でアウトと判断し、入居者の振込先を自分の口座へ直接変更。`},
-  {no:29,title:"土砂災害警戒区域は買ってもいいの？（教えてバランスさん）",url:"https://www.youtube.com/watch?v=GOTPS4yXpJ0",summary:`イエローゾーン・レッドゾーンの物件購入判断基準を投資家の実体験から解説。
+  {no:29, tags:["物件選び","融資・銀行"], title:"土砂災害警戒区域は買ってもいいの？（教えてバランスさん）",url:"https://www.youtube.com/watch?v=GOTPS4yXpJ0",summary:`イエローゾーン・レッドゾーンの物件購入判断基準を投資家の実体験から解説。
 
 ・イエローゾーン（警戒区域）：無条件で購入対象。横須賀ではほぼ全物件が該当。融資も概ね問題なし。
 ・レッドゾーン（特別警戒区域）：担保評価が出るなら購入検討可。再建築は非常に困難（RC造が必要）。
 
 レッドを逆手に取り1,100万円で購入した物件に1,500万円融資が出た実例も紹介。`},
-  {no:30,title:"教えてバランスさん！バランスさんのユーモアの秘訣はなに？",url:"https://www.youtube.com/watch?v=lBYjiMMckuI",summary:`バランス大家氏のユーモアと話し方のテクニックを公開。
+  {no:30, tags:["マインドセット"], title:"教えてバランスさん！バランスさんのユーモアの秘訣はなに？",url:"https://www.youtube.com/watch?v=lBYjiMMckuI",summary:`バランス大家氏のユーモアと話し方のテクニックを公開。
 
 ・大きな声で喋る（意識的に訓練）。
 ・面白いことは2回繰り返す（天丼）。
 ・声の方向を人数・位置に合わせて変える。
 ・圧倒的な経験値と失敗談を自虐ネタに変える。
 ・「バランス大家」というキャラクターを演じることで恥ずかしさを捨てて堂々と振る舞う。`},
-  {no:31,title:"サブリースで気をつけること【教えて！バランスさん！】",url:"https://www.youtube.com/watch?v=i0ME51HfNjI",summary:`サブリース契約の注意点を解説。
+  {no:31, tags:["賃貸管理","契約"], title:"サブリースで気をつけること【教えて！バランスさん！】",url:"https://www.youtube.com/watch?v=i0ME51HfNjI",summary:`サブリース契約の注意点を解説。
 
 チェックすべき2点：
 ① 解約できるか（解約時に家賃半年分などの高額違約金がないか）。
 ② 家賃を一方的に下げられる条項がないか。
 
 詐欺的スキームの手口：相場5万円の部屋を10万円サブリースで見せかけ、物件価格を吊り上げるケースあり。近隣相場を必ず自分で確認すること。基本的にサブリースは外した方が大家の利益は最大化される。`},
-  {no:32,title:"教えてバランスさん！ビジネスのコツ！",url:"https://www.youtube.com/watch?v=RSLdulAjMnw",summary:`ビジネスを加速させる5つのステップ。
+  {no:32, tags:["マインドセット"], title:"教えてバランスさん！ビジネスのコツ！",url:"https://www.youtube.com/watch?v=RSLdulAjMnw",summary:`ビジネスを加速させる5つのステップ。
 
 1. 自分と対話しない：アイデアが浮かんだら「自分への相談」でブレーキをかけない。
 2. 瞬発力（その場で指示）：良いと思ったら翌日に回さず即指示。
 3. 継続：継続力こそが努力の本質。
 4. 仕組み化：自分が動かなくても回る仕組みへ昇華。
 5. 捨てる（忘れる）：仕組み化後は頭のリソースを解放し、次のアイデアへ。`},
-  {no:33,title:"教えてバランスさん！なんで今だにボロ戸建買うの！？",url:"https://www.youtube.com/watch?v=xZzpYuEHd8U",summary:`20億円超の資産を運用する今でもボロ戸建てを買い続ける戦略的理由を解説。
+  {no:33, tags:["戸建投資","規模拡大戦略"], title:"教えてバランスさん！なんで今だにボロ戸建買うの！？",url:"https://www.youtube.com/watch?v=xZzpYuEHd8U",summary:`20億円超の資産を運用する今でもボロ戸建てを買い続ける戦略的理由を解説。
 
 ・物件が向こうから来る状態になっており、労力がほぼかからない。
 ・大型物件は売却するとCFが大きく減るリスクがある。
@@ -496,8 +545,41 @@ const videos = [
 「戸建てで種銭を作りレバレッジをかけて大型物件に化けさせる」錬金術サイクルを現在も継続中。`}
 ];
 
+const ALL_TAGS = ["融資・銀行","物件選び","戸建投資","区分マンション","家賃設定・客付け","売却・出口","法人・税務","賃貸管理","契約","規模拡大戦略","マインドセット"];
+
+let activeTag = null;
+
 function escapeHtml(str) {
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function renderTagBar() {
+  const bar = document.getElementById('tagBar');
+  const allBtn = `<button class="tag-btn${activeTag === null ? ' active' : ''}" onclick="selectTag(null)">すべて</button>`;
+  const tagBtns = ALL_TAGS.map(t =>
+    `<button class="tag-btn${activeTag === t ? ' active' : ''}" onclick="selectTag('${t}')">${t}</button>`
+  ).join('');
+  bar.innerHTML = allBtn + tagBtns;
+}
+
+function selectTag(tag) {
+  activeTag = tag;
+  renderTagBar();
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  let result = videos;
+  if (activeTag) {
+    result = result.filter(v => v.tags.includes(activeTag));
+  }
+  if (q) {
+    result = result.filter(v =>
+      v.title.toLowerCase().includes(q) || v.summary.toLowerCase().includes(q)
+    );
+  }
+  renderCards(result);
 }
 
 function renderCards(list) {
@@ -519,6 +601,7 @@ function renderCards(list) {
     const THRESHOLD = 120;
     const short = v.summary.slice(0, THRESHOLD);
     const hasMore = v.summary.length > THRESHOLD;
+    const tagHtml = v.tags.map(t => `<span class="card-tag">${escapeHtml(t)}</span>`).join('');
     return `
     <div class="card" data-no="${v.no}">
       <div class="card-header">
@@ -526,6 +609,7 @@ function renderCards(list) {
         <div class="card-title">${escapeHtml(v.title)}</div>
       </div>
       <div class="card-body">
+        <div class="card-tags">${tagHtml}</div>
         <div class="card-summary">${escapeHtml(short)}${hasMore ? '…' : ''}</div>
         ${hasMore ? `<div class="full-text">${escapeHtml(v.summary)}</div>
         <button class="expand-btn" onclick="toggleExpand(this)">▼ 続きを読む</button>` : ''}
@@ -559,16 +643,10 @@ function toggleExpand(btn) {
 let searchTimer;
 document.getElementById('searchInput').addEventListener('input', function() {
   clearTimeout(searchTimer);
-  searchTimer = setTimeout(() => {
-    const q = this.value.trim().toLowerCase();
-    if (!q) { renderCards(videos); return; }
-    const filtered = videos.filter(v =>
-      v.title.toLowerCase().includes(q) || v.summary.toLowerCase().includes(q)
-    );
-    renderCards(filtered);
-  }, 180);
+  searchTimer = setTimeout(() => applyFilters(), 180);
 });
 
+renderTagBar();
 renderCards(videos);
 </script>
 </body>
