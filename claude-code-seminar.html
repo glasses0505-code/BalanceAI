@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code ハンズオン セミナー</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary: #D97757;
+      --primary-dark: #B85A3D;
+      --primary-light: #FBF0EA;
+      --bg: #F5F2EE;
+      --slide-bg: #FFFFFF;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --text-light: #999;
+      --border: #E5E0DB;
+      --blue: #4A90E2;
+      --blue-light: #E8F1FB;
+      --green: #5CB85C;
+      --green-light: #E8F5E9;
+      --purple: #8B5CF6;
+      --purple-light: #F0EBFB;
+      --yellow: #F5A623;
+      --yellow-light: #FEF3DD;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .presentation {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .slide-container {
+      width: min(96vw, calc(96vh * 16 / 9));
+      height: min(96vh, calc(96vw * 9 / 16));
+      background: var(--slide-bg);
+      border-radius: 16px;
+      box-shadow: 0 12px 50px rgba(0, 0, 0, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 4.5% 5%;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .slide.active {
+      display: flex;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .slide-section {
+      font-size: 1.35vw;
+      color: var(--primary);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4vw;
+      text-transform: uppercase;
+    }
+
+    .slide-title {
+      font-size: 2.8vw;
+      font-weight: 700;
+      margin-bottom: 0.6vw;
+      line-height: 1.2;
+    }
+
+    .slide-subtitle {
+      font-size: 1.6vw;
+      color: var(--text-muted);
+      margin-bottom: 1.8vw;
+      font-weight: 400;
+    }
+
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* === Cover slide === */
+    .cover {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2018 100%);
+      color: white;
+      padding: 6%;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .cover-tag {
+      color: var(--primary);
+      font-size: 1.5vw;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5vw;
+    }
+
+    .cover-title {
+      font-size: 5.2vw;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5vw;
+    }
+
+    .cover-title .accent {
+      color: var(--primary);
+    }
+
+    .cover-subtitle {
+      font-size: 1.8vw;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 3vw;
+    }
+
+    .cover-meta {
+      font-size: 1.3vw;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* === Comparison table === */
+    .compare-table {
+      display: grid;
+      grid-template-columns: 1.4fr 1.4fr 1.6fr;
+      gap: 1.2vw;
+      margin-top: 1vw;
+    }
+
+    .compare-card {
+      padding: 1.8vw 1.5vw;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      background: var(--slide-bg);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8vw;
+      transition: transform 0.2s;
+    }
+
+    .compare-card.blue {
+      border-color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .compare-card.purple {
+      border-color: var(--purple);
+      background: var(--purple-light);
+    }
+
+    .compare-card.orange {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .compare-card-product {
+      font-size: 1.7vw;
+      font-weight: 700;
+    }
+
+    .compare-card-tag {
+      font-size: 1.3vw;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .compare-card-meta {
+      font-size: 1.6vw;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 0.5vw;
+    }
+
+    .compare-card-icon {
+      font-size: 2.7vw;
+    }
+
+    .compare-note {
+      margin-top: 1.5vw;
+      padding: 1.2vw 1.5vw;
+      background: var(--yellow-light);
+      border-left: 4px solid var(--yellow);
+      border-radius: 6px;
+      font-size: 1.4vw;
+    }
+
+    /* === Product detail slides === */
+    .product-hero {
+      display: flex;
+      align-items: center;
+      gap: 1.5vw;
+      margin-bottom: 1.5vw;
+    }
+
+    .product-icon {
+      font-size: 4.2vw;
+    }
+
+    .product-name {
+      font-size: 3.0vw;
+      font-weight: 700;
+    }
+
+    .product-tagline {
+      font-size: 1.6vw;
+      color: var(--text-muted);
+      margin-top: 0.3vw;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1vw;
+      margin-bottom: 1.2vw;
+    }
+
+    .feature-row {
+      display: flex;
+      gap: 0.8vw;
+      align-items: flex-start;
+      padding: 1vw 1.2vw;
+      background: #FAFAFA;
+      border-radius: 10px;
+      border-left: 4px solid var(--border);
+    }
+
+    .feature-row.highlight {
+      border-left-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .feature-row.warn {
+      border-left-color: var(--yellow);
+      background: var(--yellow-light);
+    }
+
+    .feature-icon {
+      font-size: 1.7vw;
+      flex-shrink: 0;
+    }
+
+    .feature-content {
+      flex: 1;
+    }
+
+    .feature-label {
+      font-size: 1.15vw;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 0.2vw;
+    }
+
+    .feature-value {
+      font-size: 1.35vw;
+      line-height: 1.5;
+    }
+
+    .feature-value ul {
+      margin: 0.3vw 0 0 1.2vw;
+      padding: 0;
+    }
+
+    .feature-value li {
+      margin-bottom: 0.2vw;
+    }
+
+    .tip-box {
+      margin-top: auto;
+      padding: 1.2vw 1.5vw;
+      background: linear-gradient(135deg, var(--primary-light), #fef9f5);
+      border-radius: 10px;
+      border-left: 4px solid var(--primary);
+      font-size: 1.4vw;
+      line-height: 1.5;
+    }
+
+    .tip-box strong {
+      color: var(--primary-dark);
+    }
+
+    /* === Position chart === */
+    .chart-container {
+      flex: 1;
+      position: relative;
+      margin: 1vw 0 0 0;
+      background: linear-gradient(135deg, #FAFAFA 0%, #F0F0F0 100%);
+      border-radius: 12px;
+      padding: 3vw;
+    }
+
+    .chart-axis-y {
+      position: absolute;
+      left: 1.5vw;
+      top: 2vw;
+      bottom: 4vw;
+      width: 3px;
+      background: var(--text);
+    }
+
+    .chart-axis-y::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -7px;
+      border: 8px solid transparent;
+      border-bottom-color: var(--text);
+    }
+
+    .chart-axis-x {
+      position: absolute;
+      bottom: 4vw;
+      left: 1.5vw;
+      right: 2vw;
+      height: 3px;
+      background: var(--text);
+    }
+
+    .chart-axis-x::after {
+      content: '';
+      position: absolute;
+      right: -8px;
+      top: -7px;
+      border: 8px solid transparent;
+      border-left-color: var(--text);
+    }
+
+    .chart-label-y {
+      position: absolute;
+      top: 1vw;
+      left: 3vw;
+      font-size: 1.3vw;
+      font-weight: 600;
+    }
+
+    .chart-label-x {
+      position: absolute;
+      bottom: 1.5vw;
+      right: 2vw;
+      font-size: 1.3vw;
+      font-weight: 600;
+    }
+
+    .chart-point {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 0.8vw;
+    }
+
+    .chart-dot {
+      width: 1.5vw;
+      height: 1.5vw;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .chart-dot.blue {
+      background: var(--blue);
+      box-shadow: 0 0 0 6px rgba(74, 144, 226, 0.2);
+    }
+
+    .chart-dot.purple {
+      background: var(--purple);
+      box-shadow: 0 0 0 6px rgba(139, 92, 246, 0.2);
+    }
+
+    .chart-dot.orange {
+      background: var(--primary);
+      box-shadow: 0 0 0 6px rgba(217, 119, 87, 0.2);
+    }
+
+    .chart-text {
+      background: white;
+      padding: 0.6vw 1vw;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .chart-text-name {
+      font-size: 1.4vw;
+      font-weight: 700;
+    }
+
+    .chart-text-desc {
+      font-size: 1.1vw;
+      color: var(--text-muted);
+      margin-top: 0.2vw;
+    }
+
+    /* === Prep slide === */
+    .prep-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5vw;
+      margin-top: 1vw;
+    }
+
+    .prep-card {
+      padding: 1.5vw;
+      background: #FAFAFA;
+      border-radius: 12px;
+      border-top: 4px solid var(--primary);
+    }
+
+    .prep-card.account {
+      border-top-color: var(--blue);
+    }
+
+    .prep-card.money {
+      border-top-color: var(--green);
+    }
+
+    .prep-card.os {
+      border-top-color: var(--purple);
+    }
+
+    .prep-card-title {
+      font-size: 1.5vw;
+      font-weight: 700;
+      margin-bottom: 0.8vw;
+      display: flex;
+      align-items: center;
+      gap: 0.5vw;
+    }
+
+    .prep-card-body {
+      font-size: 1.25vw;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .prep-card-body ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .prep-card-body li {
+      padding: 0.3vw 0;
+      display: flex;
+      gap: 0.5vw;
+    }
+
+    .prep-card-body li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .os-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5vw;
+      font-size: 1.2vw;
+    }
+
+    .os-table th,
+    .os-table td {
+      padding: 0.5vw 0.8vw;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .os-table th {
+      background: var(--purple-light);
+      font-weight: 700;
+    }
+
+    /* === Install slide === */
+    .install-step {
+      background: var(--slide-bg);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 1.3vw 1.5vw;
+      margin-bottom: 1vw;
+      display: flex;
+      gap: 1.2vw;
+      align-items: flex-start;
+    }
+
+    .install-step-num {
+      background: var(--primary);
+      color: white;
+      width: 2.5vw;
+      height: 2.5vw;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6vw;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .install-step-body {
+      flex: 1;
+    }
+
+    .install-step-title {
+      font-size: 1.6vw;
+      font-weight: 700;
+      margin-bottom: 0.5vw;
+    }
+
+    .install-step-detail {
+      font-size: 1.25vw;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .install-step-detail ul {
+      margin-left: 1.2vw;
+      margin-top: 0.3vw;
+    }
+
+    .install-link {
+      display: inline-block;
+      margin-top: 0.5vw;
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 1.2vw;
+      border-bottom: 1px dashed var(--blue);
+    }
+
+    .install-link:hover {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    /* === Caution slide === */
+    .caution-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2vw;
+      margin-top: 1vw;
+    }
+
+    .caution-card {
+      padding: 1.5vw;
+      background: var(--yellow-light);
+      border-radius: 12px;
+      border-top: 4px solid var(--yellow);
+    }
+
+    .caution-card.security {
+      background: #FFEBEE;
+      border-top-color: #E57373;
+    }
+
+    .caution-card.privacy {
+      background: var(--blue-light);
+      border-top-color: var(--blue);
+    }
+
+    .caution-icon {
+      font-size: 2.7vw;
+      margin-bottom: 0.5vw;
+    }
+
+    .caution-title {
+      font-size: 1.5vw;
+      font-weight: 700;
+      margin-bottom: 0.6vw;
+    }
+
+    .caution-body {
+      font-size: 1.2vw;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    /* === Tips slide === */
+    .tips-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1vw;
+      margin-top: 1vw;
+    }
+
+    .tip-item {
+      background: linear-gradient(90deg, var(--primary-light), #fefcfa);
+      border-left: 5px solid var(--primary);
+      border-radius: 10px;
+      padding: 1.2vw 1.5vw;
+    }
+
+    .tip-item-title {
+      font-size: 1.6vw;
+      font-weight: 700;
+      margin-bottom: 0.5vw;
+      display: flex;
+      align-items: center;
+      gap: 0.6vw;
+    }
+
+    .tip-item-body {
+      font-size: 1.25vw;
+      line-height: 1.7;
+      color: var(--text);
+      padding-left: 0.5vw;
+    }
+
+    .tip-item-body ul {
+      margin-left: 1.2vw;
+      margin-top: 0.3vw;
+    }
+
+    .tip-item-body li {
+      margin-bottom: 0.3vw;
+    }
+
+    /* === Closing slide === */
+    .closing {
+      background: linear-gradient(135deg, var(--primary) 0%, #C56240 100%);
+      color: white;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6%;
+    }
+
+    .closing-title {
+      font-size: 4.2vw;
+      font-weight: 700;
+      margin-bottom: 1.5vw;
+    }
+
+    .closing-subtitle {
+      font-size: 1.8vw;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 3vw;
+    }
+
+    .closing-cta {
+      font-size: 1.5vw;
+      color: rgba(255, 255, 255, 0.8);
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      padding-top: 2vw;
+    }
+
+    /* === Navigation === */
+    .nav {
+      position: fixed;
+      bottom: 16px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 8px 16px;
+      border-radius: 24px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+      font-family: inherit;
+    }
+
+    .nav button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text);
+      font-size: 18px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    .nav button:hover {
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .nav button:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    .nav button:disabled:hover {
+      color: var(--text);
+      background: none;
+    }
+
+    .slide-counter {
+      font-size: 13px;
+      color: var(--text-muted);
+      min-width: 56px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+      z-index: 100;
+    }
+
+    .help-hint {
+      position: fixed;
+      bottom: 16px;
+      left: 24px;
+      font-size: 11px;
+      color: var(--text-light);
+      background: rgba(255, 255, 255, 0.8);
+      padding: 4px 10px;
+      border-radius: 12px;
+      z-index: 100;
+    }
+
+    /* === Goal slide === */
+    .goal-slide {
+      justify-content: center;
+      padding: 5% 8%;
+    }
+
+    .goal-section {
+      font-size: 1.6vw;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 1vw;
+    }
+
+    .goal-title {
+      font-size: 4.2vw;
+      font-weight: 800;
+      margin-bottom: 3vw;
+      line-height: 1.1;
+    }
+
+    .goal-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2vw;
+    }
+
+    .goal-item {
+      display: flex;
+      align-items: center;
+      gap: 2vw;
+      padding: 2vw 2.5vw;
+      background: linear-gradient(90deg, var(--primary-light), #fefcfa);
+      border-left: 8px solid var(--primary);
+      border-radius: 12px;
+    }
+
+    .goal-num {
+      font-size: 3.5vw;
+      font-weight: 800;
+      color: var(--primary);
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .goal-text {
+      font-size: 2.4vw;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .goal-text .accent {
+      color: var(--primary);
+    }
+
+    /* === Print/PDF === */
+    @media print {
+
+      .nav,
+      .progress-bar,
+      .help-hint {
+        display: none;
+      }
+
+      body {
+        background: white;
+      }
+
+      .slide-container {
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+        height: 100vh;
+        page-break-after: always;
+      }
+
+      .slide {
+        display: flex !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <div class="presentation">
+    <div class="slide-container">
+
+      <!-- Slide 0: Cover -->
+      <div class="slide cover active">
+        <div class="cover-tag">バランス大家サロン　AI部会ライブ</div>
+        <div class="cover-title">
+          みんなで<br>
+          <span class="accent">Claude Code</span>を<br>
+          はじめよう
+        </div>
+        <div class="cover-subtitle">AIに慣れていない方のための<br>インストール・ハンズオン</div>
+        <div class="cover-meta">2026/5/4 ｜ バランス大家サロン AI部会</div>
+      </div>
+
+      <!-- Slide: 今日のゴール -->
+      <div class="slide goal-slide">
+        <div class="goal-section">🎯 今日のゴール</div>
+        <div class="goal-title">これができたら今日は大成功！</div>
+        <div class="goal-list">
+          <div class="goal-item">
+            <div class="goal-num">①</div>
+            <div class="goal-text"><span class="accent">Claude Code</span> をインストールして<br>使えるようにする</div>
+          </div>
+          <div class="goal-item">
+            <div class="goal-num">②</div>
+            <div class="goal-text"><span class="accent">Claude / Claude Cowork / Claude Code</span><br>の違いを理解する</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 1: 3つのClaude -->
+      <div class="slide">
+        <div class="slide-section">1. Claude Code とは？</div>
+        <div class="slide-title">3つの「Claude」、何が違う？</div>
+        <div class="slide-subtitle">中身のAI（モデル）は同じ。<strong>どこで動くか・何ができるか</strong>が違う</div>
+
+        <div class="slide-body">
+          <div class="compare-table">
+            <div class="compare-card blue">
+              <div class="compare-card-icon">💬</div>
+              <div class="compare-card-product">Claude.ai</div>
+              <div class="compare-card-tag">（Web版）</div>
+              <div class="compare-card-meta">「考える」ためのClaude</div>
+              <div style="font-size:1.2vw; color:var(--text-muted); margin-top:0.3vw;">例えるなら：賢い相談相手</div>
+            </div>
+            <div class="compare-card purple">
+              <div class="compare-card-icon">🖥️</div>
+              <div class="compare-card-product">Claude Cowork</div>
+              <div class="compare-card-tag">（デスクトップアプリ）</div>
+              <div class="compare-card-meta">「作業する」ためのClaude</div>
+              <div style="font-size:1.2vw; color:var(--text-muted); margin-top:0.3vw;">例えるなら：パソコンの中の同僚</div>
+            </div>
+            <div class="compare-card orange">
+              <div class="compare-card-icon">⚡</div>
+              <div class="compare-card-product">Claude Code</div>
+              <div class="compare-card-tag">（CLI / アプリ）</div>
+              <div class="compare-card-meta">「作る」ためのClaude</div>
+              <div style="font-size:1.2vw; color:var(--text-muted); margin-top:0.3vw;">例えるなら：あなた専属のプログラマ</div>
+            </div>
+          </div>
+
+          <div class="compare-note">
+            💡 <strong>Pro プラン（月22ドル〜）1本で、3つすべて使えます。</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Claude.ai -->
+      <div class="slide">
+        <div class="slide-section">1. Claude Code とは？</div>
+        <div class="product-hero">
+          <div class="product-icon">💬</div>
+          <div>
+            <div class="product-name">Claude.ai（Web版）</div>
+            <div class="product-tagline">ブラウザの中で会話する、いちばん基本のClaude</div>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="feature-grid">
+            <div class="feature-row">
+              <div class="feature-icon">🌐</div>
+              <div class="feature-content">
+                <div class="feature-label">形態</div>
+                <div class="feature-value">Webサイト（claude.ai）/ スマホアプリ</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <div class="feature-icon">👤</div>
+              <div class="feature-content">
+                <div class="feature-label">向いている人</div>
+                <div class="feature-value">まずAIを試したい <strong>すべての人</strong></div>
+              </div>
+            </div>
+            <div class="feature-row" style="grid-column: span 2;">
+              <div class="feature-icon">✅</div>
+              <div class="feature-content">
+                <div class="feature-label">できること</div>
+                <div class="feature-value">質問、相談、文章作成、要約、画像分析、ブレスト、資料作成</div>
+              </div>
+            </div>
+            <div class="feature-row warn" style="grid-column: span 2;">
+              <div class="feature-icon">🚫</div>
+              <div class="feature-content">
+                <div class="feature-label">できないこと</div>
+                <div class="feature-value">あなたのPCのファイルを直接触る、勝手に作業を進める</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-box">
+            💡 <strong>使い方のイメージ：</strong>ChatGPTと同じ感覚。会話の中で完結する。
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Claude Cowork -->
+      <div class="slide">
+        <div class="slide-section">1. Claude Code とは？</div>
+        <div class="product-hero">
+          <div class="product-icon">🖥️</div>
+          <div>
+            <div class="product-name">Claude Cowork</div>
+            <div class="product-tagline">あなたのPCの中で「代わりに作業してくれる」Claude</div>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="feature-grid">
+            <div class="feature-row">
+              <div class="feature-icon">🖥️</div>
+              <div class="feature-content">
+                <div class="feature-label">形態</div>
+                <div class="feature-value">デスクトップアプリ（Mac / Windows）</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <div class="feature-icon">👤</div>
+              <div class="feature-content">
+                <div class="feature-label">向いている人</div>
+                <div class="feature-value"><strong>コードを書かない知識労働者</strong>（事務、企画、リサーチ系）</div>
+              </div>
+            </div>
+            <div class="feature-row highlight" style="grid-column: span 2;">
+              <div class="feature-icon">🛠️</div>
+              <div class="feature-content">
+                <div class="feature-label">できること</div>
+                <div class="feature-value">
+                  <ul>
+                    <li>ローカルのファイル・フォルダを読み書き</li>
+                    <li>Google Drive / Gmail などの<strong>業務ツールと連携</strong></li>
+                    <li>「毎朝メールをチェックして要約」など<strong>定期実行</strong></li>
+                    <li>複数アプリをまたぐ作業を<strong>自動で完遂</strong></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-box">
+            💡 <strong>使い方のイメージ：</strong>「これお願い」と頼んだら、結果のファイルが返ってくる。<br>
+            会話ではなく <strong>委任</strong>。
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: Claude Code -->
+      <div class="slide">
+        <div class="slide-section">1. Claude Code とは？</div>
+        <div class="product-hero">
+          <div class="product-icon">⚡</div>
+          <div>
+            <div class="product-name">Claude Code</div>
+            <div class="product-tagline">あなたのPCの中で「プログラムを作って実行してくれる」Claude</div>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="feature-grid">
+            <div class="feature-row">
+              <div class="feature-icon">⌨️</div>
+              <div class="feature-content">
+                <div class="feature-label">形態</div>
+                <div class="feature-value">デスクトップアプリ（Mac / Windows）<br>+ コマンドラインツール（ターミナル / VS Code拡張）</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <div class="feature-icon">👤</div>
+              <div class="feature-content">
+                <div class="feature-label">向いている人</div>
+                <div class="feature-value">もともとは開発者向け。<br><strong>非エンジニアにも便利な使い方が多数</strong></div>
+              </div>
+            </div>
+            <div class="feature-row highlight" style="grid-column: span 2;">
+              <div class="feature-icon">🛠️</div>
+              <div class="feature-content">
+                <div class="feature-label">できること</div>
+                <div class="feature-value">
+                  <ul>
+                    <li>PC上の<strong>あらゆるファイル</strong>を読み書き</li>
+                    <li><strong>コマンドの実行</strong>（gitコマンド、ビルド、テスト等）</li>
+                    <li>プロジェクト全体を理解した上での作業</li>
+                    <li><strong>スキル・MCP・Sub Agent</strong> で自由に拡張</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-box">
+            💡 <strong>使い方のイメージ：</strong>日本語で指示すれば、PC上の作業をほぼ何でも代行してくれる<br>
+            <strong>「最も自由度の高いAI」</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5: 位置関係 -->
+      <div class="slide">
+        <div class="slide-section">1. Claude Code とは？</div>
+        <div class="slide-title">3つの位置関係</div>
+        <div class="slide-subtitle">自由度と学習コストはトレードオフ</div>
+
+        <div class="slide-body">
+          <div class="chart-container">
+            <div class="chart-axis-y"></div>
+            <div class="chart-axis-x"></div>
+            <div class="chart-label-y">自由度 ↑</div>
+            <div class="chart-label-x">→ 学習コスト・玄人度</div>
+
+            <div class="chart-point" style="bottom: 28%; left: 12%;">
+              <div class="chart-dot blue"></div>
+              <div class="chart-text">
+                <div class="chart-text-name">💬 Claude.ai</div>
+                <div class="chart-text-desc">会話だけ</div>
+              </div>
+            </div>
+
+            <div class="chart-point" style="bottom: 50%; left: 38%;">
+              <div class="chart-dot purple"></div>
+              <div class="chart-text">
+                <div class="chart-text-name">🖥️ Claude Cowork</div>
+                <div class="chart-text-desc">業務作業の自動化にフォーカス</div>
+              </div>
+            </div>
+
+            <div class="chart-point" style="bottom: 75%; left: 62%;">
+              <div class="chart-dot orange"></div>
+              <div class="chart-text">
+                <div class="chart-text-name">⚡ Claude Code</div>
+                <div class="chart-text-desc">何でもできる代わりに、<br>少し慣れる必要あり</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6: 事前準備 -->
+      <div class="slide">
+        <div class="slide-section">2. 始める前に必要なもの</div>
+        <div class="slide-title">事前準備</div>
+        <div class="slide-subtitle">アカウントと課金は今すぐ！　他の準備は後でもOK</div>
+
+        <div class="slide-body">
+          <div class="prep-grid">
+            <div class="prep-card account">
+              <div class="prep-card-title">🔑 アカウント</div>
+              <div class="prep-card-body">
+                <ul>
+                  <li><strong>Anthropic（Claude）</strong> アカウント</li>
+                  <li><strong>GitHub</strong> アカウント</li>
+                </ul>
+              </div>
+            </div>
+            <div class="prep-card money">
+              <div class="prep-card-title">💳 課金</div>
+              <div class="prep-card-body">
+                <ul>
+                  <li><strong>Pro プラン：月 22ドル〜</strong></li>
+                  <li>1本で Claude.ai / Cowork / Code すべて使える</li>
+                  <li>合わなければ翌月解約OK</li>
+                </ul>
+              </div>
+            </div>
+            <div class="prep-card os" style="grid-column: span 2;">
+              <div class="prep-card-title">💻 OS別の準備（後からでもOK）</div>
+              <table class="os-table">
+                <tr>
+                  <th style="width: 15%;">OS</th>
+                  <th>必要なもの</th>
+                </tr>
+                <tr>
+                  <td><strong>🍎 Mac</strong></td>
+                  <td>ターミナル（標準）/ Homebrew / Node.js / Git</td>
+                </tr>
+                <tr>
+                  <td><strong>🪟 Windows</strong></td>
+                  <td>Git for Bash または WSL / Node.js / Git</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 7: インストール -->
+      <div class="slide">
+        <div class="slide-section">3. インストール（ハンズオン本体）</div>
+        <div class="slide-title">今日やること</div>
+        <div class="slide-subtitle">2つのアプリをインストールします</div>
+
+        <div class="slide-body">
+          <div class="install-step">
+            <div class="install-step-num">1</div>
+            <div class="install-step-body">
+              <div class="install-step-title">🖥️ Windowsアプリ（Cowork）をインストール</div>
+              <div class="install-step-detail">
+                <ul>
+                  <li>Coworkで<strong>ワークスペース</strong>を指定</li>
+                  <li>ローカルのファイルを操作してみる</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="install-step">
+            <div class="install-step-num">2</div>
+            <div class="install-step-body">
+              <div class="install-step-title">⚡ Claude Code 用に Git をインストール</div>
+              <div class="install-step-detail">
+                いけとも 動画を参考に手順を進めます。
+                <br>
+                <a class="install-link" href="https://youtu.be/cezk7NeCDm0?si=7hJw9WBYD-OgH7uQ&t=1396" target="_blank">
+                  📺 いけとも 動画（該当部分から再生）
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 8: 注意点 -->
+      <div class="slide">
+        <div class="slide-section">4. 使う上での制約・注意点</div>
+        <div class="slide-title">知っておきたい3つのこと</div>
+        <div class="slide-subtitle">「便利」と「リスク」は表裏一体</div>
+
+        <div class="slide-body">
+          <div class="caution-grid">
+            <div class="caution-card">
+              <div class="caution-icon">💰</div>
+              <div class="caution-title">課金体系</div>
+              <div class="caution-body">
+                <strong>使った分だけ消費</strong>する仕組み。<br>
+                定額プランでも上限あり（Pro / Max 5x / Max 20x）。<br>
+                使い込む人は Max を検討。
+              </div>
+            </div>
+            <div class="caution-card security">
+              <div class="caution-icon">🔐</div>
+              <div class="caution-title">セキュリティ</div>
+              <div class="caution-body">
+                ファイル書き換え・コマンド実行を<strong>勝手にやる</strong>リスクあり。<br>
+                <strong>権限モード</strong>で許可範囲を制御する。
+              </div>
+            </div>
+            <div class="caution-card privacy">
+              <div class="caution-icon">🔒</div>
+              <div class="caution-title">データの扱い</div>
+              <div class="caution-body">
+                <strong>関係者外秘（未公開物件情報）・個人情報（プロフィールシート）</strong>を入力していいか、<br>
+                AIの学習に利用されるリスクあり。<br>
+                迷ったら入れない。またはマスキングする。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 9: 便利な使い方 -->
+      <div class="slide">
+        <div class="slide-section">5. 便利な使い方</div>
+        <div class="slide-title">こんな使い方があります</div>
+        <div class="slide-subtitle">インストールが終わったら、ぜひ挑戦してほしいこと</div>
+
+        <div class="slide-body">
+          <div class="tips-list">
+            <div class="tip-item">
+              <div class="tip-item-title">🖥️ ① 常時起動するPCを作成する</div>
+              <div class="tip-item-body">
+                <ul>
+                  <li><strong>Dispatch</strong> を使えば、スマホから Cowork を呼び出して利用できる</li>
+                  <li>多くの人は <strong>Mac mini</strong>（品薄）。Windows PC でも OK！</li>
+                  <li>ローカルファイルを使うので、<strong>1つの環境にまとめる</strong>のが効率的</li>
+                  <li>常時起動PCへは、<strong>Windows リモートデスクトップ</strong> や <strong>Chrome リモートデスクトップ</strong> でログイン</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tip-item">
+              <div class="tip-item-title">📚 ② Obsidian に情報をまとめる</div>
+              <div class="tip-item-body">
+                ローカルのMarkdownファイルを Claude Code から読み書きできるので、<strong>知識ベース構築</strong> と相性抜群。
+              </div>
+            </div>
+            <div class="tip-item">
+              <div class="tip-item-title">⏰ ③ スケジュール実行 / MCP 連携</div>
+              <div class="tip-item-body">
+                「毎朝7時に〇〇」「毎週月曜に〇〇」を自動化。MCP サーバーを追加すれば、Notion・Slack・Calendar などとも連携。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 10: Closing -->
+      <div class="slide closing">
+        <div class="closing-title">さあ、始めましょう 🚀</div>
+        <div class="closing-subtitle">最初のハードルは「インストール」だけ。<br>その先には、想像以上の世界が広がっています。</div>
+        <div class="closing-cta">
+          Questions? — お気軽にどうぞ
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="nav">
+    <button id="prevBtn" title="前へ (←)">◀</button>
+    <span class="slide-counter" id="counter">1 / 11</span>
+    <button id="nextBtn" title="次へ (→)">▶</button>
+    <button id="fullscreenBtn" title="全画面 (F)">⛶</button>
+  </div>
+
+  <div class="help-hint">← → : ページ送り　|　F : 全画面　|　Home/End : 最初/最後</div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    let current = 0;
+
+    const counter = document.getElementById('counter');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const fsBtn = document.getElementById('fullscreenBtn');
+    const progressBar = document.getElementById('progressBar');
+
+    function show(idx) {
+      if (idx < 0 || idx >= total) return;
+      slides[current].classList.remove('active');
+      current = idx;
+      slides[current].classList.add('active');
+      counter.textContent = `${current + 1} / ${total}`;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === total - 1;
+      progressBar.style.width = `${((current + 1) / total) * 100}%`;
+    }
+
+    prevBtn.addEventListener('click', () => show(current - 1));
+    nextBtn.addEventListener('click', () => show(current + 1));
+    fsBtn.addEventListener('click', () => {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); show(current + 1); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(current - 1); }
+      else if (e.key === 'Home') { e.preventDefault(); show(0); }
+      else if (e.key === 'End') { e.preventDefault(); show(total - 1); }
+      else if (e.key === 'f' || e.key === 'F') { fsBtn.click(); }
+    });
+
+    show(0);
+  </script>
+
+</body>
+
+</html>
