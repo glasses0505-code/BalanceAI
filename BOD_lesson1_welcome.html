@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第1講：入学おめでとう ｜ BOD</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --primary: #D97757;
+    --primary-dark: #B85A3D;
+    --primary-light: #FBF0EA;
+    --bg: #F5F2EE;
+    --slide-bg: #FFFFFF;
+    --text: #1a1a1a;
+    --text-muted: #666;
+    --text-light: #999;
+    --border: #E5E0DB;
+    --blue: #4A90E2;
+    --blue-light: #E8F1FB;
+    --green: #5CB85C;
+    --green-light: #E8F5E9;
+    --purple: #8B5CF6;
+    --purple-light: #F0EBFB;
+    --yellow: #F5A623;
+    --yellow-light: #FEF3DD;
+  }
+
+  html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .presentation {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .slide-container {
+    width: min(96vw, calc(96vh * 16 / 9));
+    height: min(96vh, calc(96vw * 9 / 16));
+    background: var(--slide-bg);
+    border-radius: 16px;
+    box-shadow: 0 12px 50px rgba(0,0,0,0.12);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    padding: 4.5% 5%;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .slide.active { display: flex; animation: fadeIn 0.4s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* === Common headers === */
+  .slide-section {
+    font-size: 1.35vw;
+    color: var(--primary);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4vw;
+    text-transform: uppercase;
+  }
+  .slide-title {
+    font-size: 2.8vw;
+    font-weight: 700;
+    margin-bottom: 0.6vw;
+    line-height: 1.2;
+  }
+  .slide-subtitle {
+    font-size: 1.6vw;
+    color: var(--text-muted);
+    margin-bottom: 1.8vw;
+    font-weight: 400;
+  }
+  .slide-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+  /* === Cover === */
+  .cover {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2018 100%);
+    color: white;
+    padding: 6%;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .cover-tag { color: var(--primary); font-size: 1.5vw; font-weight: 600; letter-spacing: 0.1em; margin-bottom: 1.5vw; }
+  .cover-title { font-size: 5.2vw; font-weight: 700; line-height: 1.1; margin-bottom: 1.5vw; }
+  .cover-title .accent { color: var(--primary); }
+  .cover-subtitle { font-size: 1.8vw; color: rgba(255,255,255,0.7); margin-bottom: 3vw; }
+  .cover-meta { font-size: 1.3vw; color: rgba(255,255,255,0.5); }
+  .cover-time {
+    display: inline-block;
+    font-size: 1.4vw;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: 0.5vw 1.5vw;
+    border-radius: 999px;
+    margin-top: 1vw;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  /* === Section opener === */
+  .section-opener {
+    justify-content: center;
+    padding: 5% 8%;
+    background: linear-gradient(135deg, var(--primary-light) 0%, #fefcfa 100%);
+  }
+  .section-opener .section-num {
+    font-size: 1.6vw;
+    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    margin-bottom: 1vw;
+  }
+  .section-opener .section-headline {
+    font-size: 4.8vw;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1.5vw;
+  }
+  .section-opener .section-headline .accent { color: var(--primary); }
+  .section-opener .section-lead {
+    font-size: 1.7vw;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 80%;
+  }
+
+  /* === Topic list === */
+  .topic-list { display: flex; flex-direction: column; gap: 1vw; margin-top: 0.5vw; }
+  .topic-item {
+    background: linear-gradient(90deg, var(--primary-light), #fefcfa);
+    border-left: 5px solid var(--primary);
+    border-radius: 10px;
+    padding: 1.1vw 1.5vw;
+    font-size: 1.5vw;
+    line-height: 1.6;
+  }
+  .topic-item strong { color: var(--primary-dark); }
+
+  /* === Parable / Analogy slide === */
+  .parable {
+    justify-content: center;
+    padding: 5% 9%;
+    background: linear-gradient(135deg, #fafafa 0%, #f0ebe5 100%);
+  }
+  .parable-tag {
+    font-size: 1.4vw;
+    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 1.5vw;
+  }
+  .parable-quote {
+    position: relative;
+    font-size: 2.4vw;
+    line-height: 1.7;
+    font-weight: 500;
+    padding: 1vw 0 1vw 4vw;
+    border-left: 6px solid var(--primary);
+  }
+  .parable-quote::before {
+    content: '“';
+    position: absolute;
+    left: 0.5vw;
+    top: -2vw;
+    font-size: 8vw;
+    color: var(--primary);
+    opacity: 0.25;
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+  .parable-quote .accent { color: var(--primary-dark); font-weight: 700; }
+
+  /* === Key phrase slide === */
+  .keyphrase {
+    background: linear-gradient(135deg, var(--primary) 0%, #C56240 100%);
+    color: white;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6%;
+  }
+  .keyphrase-tag {
+    font-size: 1.5vw;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.3em;
+    margin-bottom: 2.5vw;
+    font-weight: 600;
+  }
+  .keyphrase-text {
+    font-size: 4.8vw;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+  }
+  .keyphrase-text::before { content: '「'; opacity: 0.7; }
+  .keyphrase-text::after { content: '」'; opacity: 0.7; }
+
+  /* === Emphasis slide (purpose vs means) === */
+  .emphasis {
+    justify-content: center;
+    padding: 5% 8%;
+  }
+  .emphasis-headline {
+    font-size: 3.6vw;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 3vw;
+    text-align: center;
+  }
+  .emphasis-headline .strike { text-decoration: line-through; color: var(--text-light); }
+  .emphasis-headline .accent { color: var(--primary); }
+  .emphasis-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2vw; margin-bottom: 2vw; }
+  .emphasis-card {
+    padding: 2vw;
+    border-radius: 14px;
+    text-align: center;
+  }
+  .emphasis-card.bad {
+    background: #f5f0ec;
+    border: 2px dashed #ccc;
+    color: var(--text-light);
+  }
+  .emphasis-card.good {
+    background: var(--primary-light);
+    border: 2px solid var(--primary);
+  }
+  .emphasis-card-label { font-size: 1.3vw; font-weight: 700; letter-spacing: 0.2em; margin-bottom: 0.8vw; }
+  .emphasis-card-text { font-size: 2vw; font-weight: 700; }
+  .emphasis-card.good .emphasis-card-text { color: var(--primary-dark); }
+  .emphasis-note {
+    text-align: center;
+    font-size: 1.5vw;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* === Work / pause slide === */
+  .work-slide {
+    justify-content: center;
+    padding: 5% 6%;
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFE082 100%);
+    text-align: center;
+  }
+  .work-badge {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #FFE082;
+    padding: 0.8vw 2vw;
+    border-radius: 999px;
+    font-size: 1.4vw;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    margin: 0 auto 1.8vw;
+  }
+  .work-title {
+    font-size: 4.0vw;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 1.5vw;
+  }
+  .work-title .accent { color: var(--primary); }
+  .work-instruction {
+    font-size: 2vw;
+    font-weight: 600;
+    margin-bottom: 2vw;
+    color: #5a4a1a;
+  }
+  .work-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8vw;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  .work-example {
+    background: rgba(255,255,255,0.8);
+    border-left: 5px solid var(--primary);
+    padding: 1vw 1.5vw;
+    text-align: left;
+    font-size: 1.4vw;
+    border-radius: 8px;
+    line-height: 1.6;
+  }
+  .work-example .label { color: var(--primary); font-weight: 700; margin-right: 0.5vw; }
+
+  /* === Profile cards === */
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2vw; margin-top: 0.5vw; }
+  .profile-card {
+    background: #FAFAFA;
+    border-left: 4px solid var(--primary);
+    padding: 1.3vw 1.5vw;
+    border-radius: 10px;
+  }
+  .profile-card.highlight { background: var(--primary-light); border-left-color: var(--primary-dark); }
+  .profile-card-label { font-size: 1.1vw; color: var(--primary); font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.5vw; }
+  .profile-card-text { font-size: 1.5vw; line-height: 1.5; font-weight: 500; }
+  .profile-card-text strong { color: var(--primary-dark); }
+
+  /* === Timeline (career) === */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6vw;
+    margin-top: 0.5vw;
+  }
+  .timeline-row {
+    display: grid;
+    grid-template-columns: 8vw 1fr;
+    gap: 1.5vw;
+    align-items: center;
+    padding: 0.9vw 1.2vw;
+    background: #FAFAFA;
+    border-radius: 10px;
+    border-left: 4px solid var(--border);
+  }
+  .timeline-row.peak { border-left-color: var(--green); background: var(--green-light); }
+  .timeline-row.crisis { border-left-color: var(--yellow); background: var(--yellow-light); }
+  .timeline-row.now { border-left-color: var(--primary); background: var(--primary-light); }
+  .timeline-age { font-size: 1.6vw; font-weight: 800; color: var(--primary); text-align: center; }
+  .timeline-text { font-size: 1.4vw; line-height: 1.5; }
+
+  /* === Closing === */
+  .closing {
+    background: linear-gradient(135deg, var(--primary) 0%, #C56240 100%);
+    color: white;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 6%;
+  }
+  .closing-title { font-size: 4.2vw; font-weight: 700; margin-bottom: 1.5vw; }
+  .closing-subtitle { font-size: 1.8vw; color: rgba(255,255,255,0.9); margin-bottom: 3vw; line-height: 1.6; }
+  .closing-cta { font-size: 1.5vw; color: rgba(255,255,255,0.85); border-top: 1px solid rgba(255,255,255,0.3); padding-top: 2vw; }
+
+  /* === Navigation === */
+  .nav {
+    position: fixed; bottom: 16px; right: 24px;
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,0.95);
+    padding: 8px 16px; border-radius: 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    z-index: 100;
+  }
+  .nav button { background: none; border: none; cursor: pointer; color: var(--text); font-size: 18px; padding: 4px 8px; border-radius: 4px; }
+  .nav button:hover { color: var(--primary); background: var(--primary-light); }
+  .nav button:disabled { opacity: 0.3; cursor: default; }
+  .slide-counter { font-size: 13px; color: var(--text-muted); min-width: 56px; text-align: center; font-weight: 600; }
+
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--primary); transition: width 0.3s ease; z-index: 100; }
+
+  .help-hint {
+    position: fixed; bottom: 16px; left: 24px;
+    font-size: 11px; color: var(--text-light);
+    background: rgba(255,255,255,0.8);
+    padding: 4px 10px; border-radius: 12px;
+    z-index: 100;
+  }
+
+  /* === Print/PDF === */
+  @media print {
+    .nav, .progress-bar, .help-hint { display: none; }
+    body { background: white; }
+    .slide-container { box-shadow: none; border-radius: 0; width: 100%; height: 100vh; page-break-after: always; }
+    .slide { display: flex !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="presentation">
+  <div class="slide-container">
+
+    <!-- Slide 1: Cover -->
+    <div class="slide cover active">
+      <div class="cover-tag">BOD ｜ 第1講</div>
+      <div class="cover-title">
+        入学、<br>
+        <span class="accent">おめでとう。</span>
+      </div>
+      <div class="cover-subtitle">
+        物件を買う前に、自分が何のために生きているのか<br>
+        ── そこに気づくための時間。
+      </div>
+      <div class="cover-time">⏱ 60分</div>
+    </div>
+
+    <!-- Slide 2: 本質 -->
+    <div class="slide section-opener">
+      <div class="section-num">この動画の本質</div>
+      <div class="section-headline">
+        不動産は<br>
+        <span class="accent">「手段」</span>にすぎない。
+      </div>
+      <div class="section-lead">
+        手段を握る前に、君の人生の目的を一度言葉にする。<br>
+        やる気は3日で消えるが、目的の火は何年も燃え続ける。<br>
+        だから入学式は、丁寧に灯す。
+      </div>
+    </div>
+
+    <!-- Slide 3: オープニング opener -->
+    <div class="slide section-opener">
+      <div class="section-num">OPENING</div>
+      <div class="section-headline">
+        ようこそ、<br>
+        <span class="accent">BOD</span>へ。
+      </div>
+      <div class="section-lead">
+        「みなさ〜ん、バランス取れてますかっ！」
+      </div>
+    </div>
+
+    <!-- Slide 4: オープニング 話すトピック -->
+    <div class="slide">
+      <div class="slide-section">OPENING ｜ 話すトピック</div>
+      <div class="slide-title">数ある投資の中で、<span style="color:var(--primary);">不動産</span>を選んだ君へ。</div>
+      <div class="slide-subtitle">株・FX・副業・仮想通貨ではなく、なぜ不動産か。</div>
+
+      <div class="slide-body">
+        <div class="topic-list">
+          <div class="topic-item">ここに来てくれた<strong>感謝</strong>を、まず最初に伝えたい。</div>
+          <div class="topic-item">不動産を選んだ<strong>勇気</strong>を称賛する ── 数ある選択肢の中から、君はこの道を選んだ。</div>
+          <div class="topic-item">不動産は「<strong>すぐ儲かる</strong>」ものではない。＝楽したい人は選ばない。</div>
+          <div class="topic-item">だから動画を再生した瞬間に、もう<strong>半歩前に出ている</strong>。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: オープニング 例え話 -->
+    <div class="slide parable">
+      <div class="parable-tag">— たとえば —</div>
+      <div class="parable-quote">
+        部活でいうと、サッカー部でも野球部でもなく、<br>
+        いきなり<span class="accent">「経営学部」</span>に入った感じ。<br>
+        みんなと違う道を選んだ。<br>
+        それだけでもう、<span class="accent">特別だよ。</span>
+      </div>
+    </div>
+
+    <!-- Slide 6: オープニング キーフレーズ -->
+    <div class="slide keyphrase">
+      <div class="keyphrase-tag">KEY PHRASE</div>
+      <div class="keyphrase-text">
+        一歩を踏み出した時点で、<br>君はもう勝者の仲間入り。
+      </div>
+    </div>
+
+    <!-- Slide 7: 第1節 opener -->
+    <div class="slide section-opener">
+      <div class="section-num">第1節</div>
+      <div class="section-headline">
+        バランス大家って、<br>
+        <span class="accent">どんな人？</span>
+      </div>
+      <div class="section-lead">特別な才能は、いらない。</div>
+    </div>
+
+    <!-- Slide 8: 第1節 自己紹介 -->
+    <div class="slide">
+      <div class="slide-section">第1節 ｜ プロフィール</div>
+      <div class="slide-title">33歳、手出し<span style="color:var(--primary);">100万円</span>からのスタート。</div>
+      <div class="slide-subtitle">最初から特別な人だったわけじゃない。</div>
+
+      <div class="slide-body">
+        <div class="timeline">
+          <div class="timeline-row">
+            <div class="timeline-age">〜30歳</div>
+            <div class="timeline-text">ハワイでサーフィン三昧の<strong>会社員</strong>。</div>
+          </div>
+          <div class="timeline-row crisis">
+            <div class="timeline-age">30歳</div>
+            <div class="timeline-text"><strong>リストラ</strong> ── そして不動産に出会う。</div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-age">33歳</div>
+            <div class="timeline-text">手出し<strong>100万円</strong>でスタート。</div>
+          </div>
+          <div class="timeline-row crisis">
+            <div class="timeline-age">途中</div>
+            <div class="timeline-text">お金が尽きてピンチに。<strong>妻に頭を下げた</strong>こともある。</div>
+          </div>
+          <div class="timeline-row now">
+            <div class="timeline-age">いま</div>
+            <div class="timeline-text">家賃年<strong>2億円</strong>／サロン生<strong>数千名</strong>。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 9: 第1節 例え話 -->
+    <div class="slide parable">
+      <div class="parable-tag">— たとえば —</div>
+      <div class="parable-quote">
+        マンガの主人公って、最初は弱いでしょ。<br>
+        でも、<span class="accent">コツコツ努力して</span>仲間を増やして、<br>
+        気づいたら強くなってる。<br>
+        私もそれと同じ。<span class="accent">スタート時点はみんな同じ</span>だよ。
+      </div>
+    </div>
+
+    <!-- Slide 10: 第1節 キーフレーズ -->
+    <div class="slide keyphrase">
+      <div class="keyphrase-tag">KEY PHRASE</div>
+      <div class="keyphrase-text">
+        やり方さえ間違えなければ、<br>誰でも届く場所がある。
+      </div>
+    </div>
+
+    <!-- Slide 11: 第2節 opener -->
+    <div class="slide section-opener">
+      <div class="section-num">第2節</div>
+      <div class="section-headline">
+        なぜ、君は<br>
+        <span class="accent">不動産</span>をやりたいの？
+      </div>
+      <div class="section-lead">紙とペンを用意して。</div>
+    </div>
+
+    <!-- Slide 12: 第2節 よくある答え -->
+    <div class="slide">
+      <div class="slide-section">第2節 ｜ 話すトピック</div>
+      <div class="slide-title">「なぜ不動産をやりたい？」</div>
+      <div class="slide-subtitle">よくある答え ── 全部、正解。でも、もう一段深く。</div>
+
+      <div class="slide-body">
+        <div class="profile-grid">
+          <div class="profile-card">
+            <div class="profile-card-label">💰 答え1</div>
+            <div class="profile-card-text">お金が欲しい</div>
+          </div>
+          <div class="profile-card">
+            <div class="profile-card-label">🏃 答え2</div>
+            <div class="profile-card-text">脱サラしたい</div>
+          </div>
+          <div class="profile-card">
+            <div class="profile-card-label">👴 答え3</div>
+            <div class="profile-card-text">老後が不安</div>
+          </div>
+          <div class="profile-card">
+            <div class="profile-card-label">👨‍👩‍👧 答え4</div>
+            <div class="profile-card-text">家族のために</div>
+          </div>
+          <div class="profile-card highlight" style="grid-column: span 2;">
+            <div class="profile-card-label">⭐ 最終ゴール</div>
+            <div class="profile-card-text">全部正解。でも、一段深く ── <strong>「自分と家族の幸せ」</strong>。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 13: 第2節 強調 目的vs手段 -->
+    <div class="slide emphasis">
+      <div class="emphasis-headline">
+        不動産は<br>
+        <span class="strike">目的</span> ではなく、<span class="accent">「手段」</span>。
+      </div>
+      <div class="emphasis-pair">
+        <div class="emphasis-card bad">
+          <div class="emphasis-card-label">× 目的化</div>
+          <div class="emphasis-card-text">物件を増やすこと自体が目的</div>
+        </div>
+        <div class="emphasis-card good">
+          <div class="emphasis-card-label">○ 手段</div>
+          <div class="emphasis-card-text">家族の幸せに使う道具</div>
+        </div>
+      </div>
+      <div class="emphasis-note">
+        家族時間を削る／誕生日に交渉電話 ── これは壊れた使い方。
+      </div>
+    </div>
+
+    <!-- Slide 14: 第2節 例え話 -->
+    <div class="slide parable">
+      <div class="parable-tag">— たとえば —</div>
+      <div class="parable-quote">
+        ゲームでレベル上げばっかりして、<br>
+        ストーリー進めない人いるでしょ。<br>
+        気づいたら<span class="accent">「あれ？　何のために遊んでたんだっけ？」</span>ってなるやつ。<br>
+        あれが、<span class="accent">不動産投資の罠</span>です。
+      </div>
+    </div>
+
+    <!-- Slide 15: 第2節 ワーク -->
+    <div class="slide work-slide">
+      <div class="work-badge">⏸ ここで動画を一時停止</div>
+      <div class="work-title">
+        君のゴールを、<br>
+        紙に<span class="accent">一文</span>で書いてみよう。
+      </div>
+      <div class="work-instruction">
+        「自分は、何のために不動産をやるのか？」
+      </div>
+      <div class="work-examples">
+        <div class="work-example"><span class="label">例1</span>45歳までに、家族と週3日休めるようになる。</div>
+        <div class="work-example"><span class="label">例2</span>子どもに大学を選ばせてあげられる経済力をつくる。</div>
+      </div>
+    </div>
+
+    <!-- Slide 16: 第3節 opener -->
+    <div class="slide section-opener">
+      <div class="section-num">第3節</div>
+      <div class="section-headline">
+        時間という、<br>
+        <span class="accent">最強の武器</span>。
+      </div>
+      <div class="section-lead">不動産の本当の強みは、ここにある。</div>
+    </div>
+
+    <!-- Slide 17: 第3節 内容 -->
+    <div class="slide">
+      <div class="slide-section">第3節 ｜ 話すトピック</div>
+      <div class="slide-title">「時間」 × 「複利」 × <span style="color:var(--primary);">他人のお金</span></div>
+      <div class="slide-subtitle">不動産だけが持つ、3つの掛け算。</div>
+
+      <div class="slide-body">
+        <div class="topic-list">
+          <div class="topic-item">不動産の最大の強み＝<strong>「時間」＋「複利」</strong>。</div>
+          <div class="topic-item">複利＝<strong>お金がお金を産む雪だるま</strong>。</div>
+          <div class="topic-item">不動産特有の強み＝<strong>他人のお金（銀行融資）</strong>で複利を回せる。</div>
+          <div class="topic-item">弱点＝<strong>時間がかかる</strong>。3年で億万長者にはなれない／10年なら経済的自由は射程。</div>
+          <div class="topic-item" style="background: linear-gradient(90deg, #FFF8E1, #FFE082); border-left-color: var(--yellow);">
+            結論：<strong>今日始めた人は、来年始める人より1年分得をする。</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 18: 第3節 例え話 -->
+    <div class="slide parable">
+      <div class="parable-tag">— たとえば —</div>
+      <div class="parable-quote">
+        雪だるまの芯を作るのは自分。<br>
+        でも大きくするのは、<span class="accent">雪だるま自身の重み</span>で<br>
+        勝手にどんどん弾みがつく。<br>
+        気づいたら、すごい大きさになってる。<br>
+        それが<span class="accent">複利</span>。
+      </div>
+    </div>
+
+    <!-- Slide 19: 第3節 キーフレーズ -->
+    <div class="slide keyphrase">
+      <div class="keyphrase-tag">KEY PHRASE</div>
+      <div class="keyphrase-text">
+        迷ったら、<br>やったことがない方を選びなさい。
+      </div>
+    </div>
+
+    <!-- Slide 20: 第4節 opener -->
+    <div class="slide section-opener">
+      <div class="section-num">第4節</div>
+      <div class="section-headline">
+        なぜ、私は<br>
+        <span class="accent">BOD</span>を創ったのか？
+      </div>
+      <div class="section-lead">100人 × 100万円ではなく、100万人 × 100円。</div>
+    </div>
+
+    <!-- Slide 21: 第4節 内容 -->
+    <div class="slide">
+      <div class="slide-section">第4節 ｜ 話すトピック</div>
+      <div class="slide-title">渡したいのは、<span style="color:var(--primary);">魚</span>じゃなくて<span style="color:var(--primary);">釣り方</span>。</div>
+      <div class="slide-subtitle">一部のお金持ち向けではなく、全員のためのインフラ。</div>
+
+      <div class="slide-body">
+        <div class="topic-list">
+          <div class="topic-item">野望：<strong>「100人 × 100万円」</strong>ではなく<strong>「100万人 × 100円」</strong>。</div>
+          <div class="topic-item">一部のお金持ち向けコンサルではなく、<strong>全員のためのインフラ</strong>を作りたい。</div>
+          <div class="topic-item">不動産は本来、<strong>ふつうの人こそやるべきもの</strong>（給料伸びない時代）。</div>
+          <div class="topic-item">BODが渡すのは現金ではなく、<strong>「自力で1,000万を稼ぐ再現性のある方法」</strong>。</div>
+          <div class="topic-item">自分も先生たちから<strong>「徹底的にパクって（TTP）」</strong>育った。</div>
+          <div class="topic-item">君も私からパクれ。豊かになったら次世代に渡せ ＝ <strong>ペイ・フォワード（恩送り）</strong>。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 22: 第4節 例え話 -->
+    <div class="slide parable">
+      <div class="parable-tag">— たとえば —</div>
+      <div class="parable-quote">
+        部活でいうと、先輩から<span class="accent">シュートのコツ</span>を教わったでしょ。<br>
+        それを後輩に教えるのと、同じ。<br>
+        <span class="accent">バトンをつなぐ。</span><br>
+        それだけ。
+      </div>
+    </div>
+
+    <!-- Slide 23: 第4節 キーフレーズ -->
+    <div class="slide keyphrase">
+      <div class="keyphrase-tag">KEY PHRASE</div>
+      <div class="keyphrase-text">
+        魚を与えるんじゃなく、<br>釣り方を教える。
+      </div>
+    </div>
+
+    <!-- Slide 24: 第5節 opener (placeholder) -->
+    <div class="slide section-opener">
+      <div class="section-num">第5節</div>
+      <div class="section-headline">
+        BODは、<br>
+        <span class="accent">何をやる場所？</span>
+      </div>
+      <div class="section-lead" style="color: var(--text-light); font-style: italic;">※ 本文続きは別途追加</div>
+    </div>
+
+    <!-- Slide 25: Closing -->
+    <div class="slide closing">
+      <div class="closing-title">入学、おめでとう 🎓</div>
+      <div class="closing-subtitle">
+        やる気は3日で消える。<br>
+        でも、目的の火は何年も燃え続ける。
+      </div>
+      <div class="closing-cta">
+        BOD ｜ バランス大家
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="nav">
+  <button id="prevBtn" title="前へ (←)">◀</button>
+  <span class="slide-counter" id="counter">1 / 1</span>
+  <button id="nextBtn" title="次へ (→)">▶</button>
+  <button id="fullscreenBtn" title="全画面 (F)">⛶</button>
+</div>
+
+<div class="help-hint">← → : ページ送り　|　F : 全画面　|　Home/End : 最初/最後</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+
+  const counter = document.getElementById('counter');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const fsBtn = document.getElementById('fullscreenBtn');
+  const progressBar = document.getElementById('progressBar');
+
+  function show(idx) {
+    if (idx < 0 || idx >= total) return;
+    slides[current].classList.remove('active');
+    current = idx;
+    slides[current].classList.add('active');
+    counter.textContent = `${current + 1} / ${total}`;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === total - 1;
+    progressBar.style.width = `${((current + 1) / total) * 100}%`;
+  }
+
+  prevBtn.addEventListener('click', () => show(current - 1));
+  nextBtn.addEventListener('click', () => show(current + 1));
+  fsBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); show(current + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(current - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); show(0); }
+    else if (e.key === 'End') { e.preventDefault(); show(total - 1); }
+    else if (e.key === 'f' || e.key === 'F') { fsBtn.click(); }
+  });
+
+  show(0);
+</script>
+
+</body>
+</html>
